@@ -96,7 +96,7 @@ image
     padding-left:50px;
     line-height:25px;
 }
-.homepageParagraph span
+span
 {
     font-family:Georgia;
    
@@ -180,11 +180,12 @@ table.collectionTable tr{
 }
 
 table.collectionTable tr td.td1{
-	high:120px;
+	height:120px;
 	width:250px;
 }
-table.collectionTable tr td.td2{
-	high:120;
+table.collectionTable tr td.td2
+{
+    height:120;
 	width:300px;
 }
 

@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <section>
-<h1><em>Pink on back</em></h1>
+    <h1>Pink on back</h1>
 	<span>blablablablablablablablablablablabla</span>
     <br />
 	<div class="divider"></div>	

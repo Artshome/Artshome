@@ -3,8 +3,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <section id="wrapper">
 
-	<h1><em>详细的某类Pink on back。。</em></h1>
-	<span>静纯应该没有弄错了。。</span>	
+	<h1>详细的某类Pink on back。。</h1>
+	<span>静纯应该没有弄错了。。</span>
     <div>
 	  <table class="imgset1 collectionTable clearfix">
         <tr>
