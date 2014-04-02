@@ -120,6 +120,11 @@ image
     
 }
 
+hr
+{
+    color:#3ea18d;
+}
+/*----收藏品种类----*/
 ul.imageHolder{
 	list-style:none;
 	padding:0;
@@ -129,13 +134,6 @@ ul.imageHolder li{
 	float:left;
 	margin-left:15px;
 	margin-bottom:10px;
-	border:5px solid #DCE8ED;
-	
-	transition:border-color 1s;
-	-moz-transition:border-color 1s;
-	-webkit-transition:border-color 1s;
-	-ms-transition:border-color 1s;
-	-o-transition:border-color 1s;
 }
 ul.imageHolder li:hover{
 	border-color:#8DCBE0;
@@ -154,40 +152,61 @@ ul.imageHolder li p
 {
     color:#3ea18d
 }
-    
-.codeHolder{
-	background-color:#fff;
-	padding:7px 20px;
-	margin:0 25px 20px;
-	border-radius:15px;
-	box-shadow:1px 3px 5px #aaa inset;
-	-moz-box-shadow:1px 3px 5px #aaa inset;
-	-webkit-box-shadow:1px 3px 5px #aaa inset;
-	opacity:0.3;
-	
-	transition:opacity 1s;
-	-moz-transition:opacity 1s;
-	-webkit-transition:opacity 1s;
-	-ms-transition:opacity 1s;
-	-o-transition:opacity 1s;
-}
-.codeHolder:hover{
-	opacity:1;
-}
-.codeHolder pre{
+
+
+/*-----收藏品信息表----*/
+table.collectionTable{
+	padding:0;
 	margin:0;
-	line-height:1.5;
-	white-space:pre-wrap;
-}
-.divider{
-	height:1px;
-	background-color:#ccc;
-	border-bottom: 1px solid #fff;
-	margin:10px 0 20px;
+	width:900px;
+	font-family:Arial;
+	font-size:12px;
+	text-align:center;
+	border-collapse:collapse;
 }
 
+table.collectionTable tr td p
+{
+    float:left;
+	margin-left:70px;
+	margin-bottom:10px;
 
-#navmenu{background:#e9f2f1;font-size:15px;position:relative;z-index:999; width:900px; margin:0 auto; height:39px;}
+}
+
+table.collectionTable tr{
+	border:1px solid #DCE8ED;
+	border-left-style:none;
+	border-right-style:none;
+}
+
+table.collectionTable tr td.td1{
+	high:120px;
+	width:250px;
+}
+table.collectionTable tr td.td2{
+	high:120;
+	width:300px;
+}
+
+table.collectionTable tr th{
+	height:30px;
+}
+table.collectionTable tr td p:hover{
+	border-color:#8DCBE0;
+}
+table.collectionTable tr td p a{
+	width:150px;
+	height:100px;
+	display:block;
+}
+table.collectionTable tr td p img{
+	margin-left:30px;
+	margin-bottom:10px;
+	max-width:200px;
+	max-height:150px;
+}
+
+#navmenu{background:#e9f2f1;font-size:15px;position:relative;z-index:4; width:900px; margin:0 auto; height:39px;}
 #navmenu ul {float:left;}
 #navmenu ul li {float:left;height:37px;line-height:37px;position:relative; margin-left:25px}
 #navmenu ul li ul{position:absolute;top:37px;left:0;width:300px;background:#e9f2f1;display:none;}

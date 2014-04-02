@@ -48,7 +48,7 @@
             <li><a href="Default.aspx">HOME</a></li>
             <li><a href="Default.aspx">COLLECTIONS</a>
             <ul>
-                <li><a href="collection-pinkOnBlack.aspx">Pink on Black</a></li>
+                <li><a href="collections.aspx">Pink on Black</a></li>
                 <li><a href="Default.aspx">Flower and Butterfly in Blue</a></li>
                 <li><a href="Default.aspx">Diamond shape</a></li>
                 <li><a href="Default.aspx">Leaves on Blue</a></li>
