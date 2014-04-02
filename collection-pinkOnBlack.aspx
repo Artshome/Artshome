@@ -1,5 +1,11 @@
 ﻿<%@ Page Language="C#" masterpagefile="~/MasterPage.master" AutoEventWireup="true" CodeFile="collection-pinkOnBlack.aspx.cs" Inherits="Default2" %>
-
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a[rel*=lightbox]').lightBox();
+        });
+    </script>
+</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 	<div class="paragraph">
         <h1>详细的某类Pink on back。。</h1>

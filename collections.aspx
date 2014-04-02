@@ -1,6 +1,15 @@
 ﻿<%@ Page Language="C#" masterpagefile="~/MasterPage.master"AutoEventWireup="true" CodeFile="collections.aspx.cs" Inherits="collections" %>
-
-
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //imgcentering script
+            $('.imgset1 img').imgCentering();
+            $('.imgset2 img').imgCentering({ 'forceWidth': true, 'bgColor': '#000' });
+            $('.imgset3 img').imgCentering({ 'forceHeight': true, 'bgColor': '#000' });
+            $('.imgset4 img').imgCentering({ 'forceSmart': true });
+            });
+    </script>
+</asp:Content>     
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="paragraph">
         <h1>Pink on back</h1>

@@ -63,7 +63,7 @@ span
     margin-right:20px;
     height:100px; 
     overflow:hidden;
-    width:300px;
+    width:600px;
     float:right;
     text-align:right;
 }
@@ -87,11 +87,20 @@ span
     position:relative;
     height:20px;
     width:120px;
-    background:url(images/search.png) no-repeat top left;
+    background:url(../images/search.png) no-repeat top left;
     padding-left:25px;
     line-height:20px;
     border-style:groove;
     border-radius:6px;
+}
+.languageBox
+{
+    position:relative;
+    height:25px;
+    width:80px;
+    border-style:groove;
+    border-radius:6px;
+    margin-right:20px;
 }
 .paragraph
 {
@@ -208,7 +217,7 @@ table.collectionTable tr td p img{
 	max-height:150px;
 }
 
-#navmenu{background:#e9f2f1;font-size:15px;position:relative;z-index:4; width:900px; margin:0 auto; height:39px;}
+#navmenu{font-size:15px;position:relative;z-index:4; width:900px; margin:0 auto; height:39px;}
 #navmenu ul {float:left;}
 #navmenu ul li {float:left;height:37px;line-height:37px;position:relative; margin-left:25px}
 #navmenu ul li ul{position:absolute;top:37px;left:0;width:300px;background:#e9f2f1;display:none;}
@@ -219,7 +228,7 @@ table.collectionTable tr td p img{
 .chinaz .num li { width: 25px; height: 25px; line-height: 25px; text-align: center; color:#3ea18d; background: #e9f2f1; margin-right: 10px; border-radius:50%; cursor:pointer; float: left; }
 .chinaz .num li.on { background: Purple; } 
 .chinaz .prev,
-.chinaz .next { display: none; width: 40px; height: 100px; background: url(images/btn.png) no-repeat; position: absolute; top: 200px;}
+.chinaz .next { display: none; width: 40px; height: 100px; background: url(../images/btn.png) no-repeat; position: absolute; top: 200px;}
 .chinaz .prev { left: 0; }
 .chinaz .next { right: 0; background-position: right }
 
