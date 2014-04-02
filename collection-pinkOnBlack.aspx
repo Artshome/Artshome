@@ -1,10 +1,10 @@
 ﻿<%@ Page Language="C#" masterpagefile="~/MasterPage.master" AutoEventWireup="true" CodeFile="collection-pinkOnBlack.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<section id="wrapper">
-
-	<h1>详细的某类Pink on back。。</h1>
-	<span>静纯应该没有弄错了。。</span>
+	<div class="paragraph">
+        <h1>详细的某类Pink on back。。</h1>
+	    <span>静纯应该没有弄错了。。</span>
+    </div>
     <div>
 	  <table class="imgset1 collectionTable clearfix">
         <tr>
@@ -36,7 +36,5 @@
     </table>
 	</div>
 	
-</section>
-<div style="text-align:center;clear:both">
-</div>
+
 </asp:Content>

@@ -1,6 +1,6 @@
 ﻿body 
 {
-    background-image:url(images/back.gif);
+    background-image:url(../images/back.gif);
 }
 h1,h2,h3,h4,h5,h6
 {
@@ -26,6 +26,11 @@ a
 image
 {
     border:none;
+}
+span
+{
+    font-family:Georgia;
+   
 }
 .mainBody
 {
@@ -88,7 +93,7 @@ image
     border-style:groove;
     border-radius:6px;
 }
-.homepageParagraph
+.paragraph
 {
     width:800px;
     padding-top:20px;
@@ -96,11 +101,7 @@ image
     padding-left:50px;
     line-height:25px;
 }
-span
-{
-    font-family:Georgia;
-   
-}
+
 .facebookLike img
 {
     width:30px;

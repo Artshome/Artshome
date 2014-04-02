@@ -2,9 +2,10 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<section>
-    <h1>Pink on back</h1>
-	<span>blablablablablablablablablablablabla</span>
+    <div class="paragraph">
+        <h1>Pink on back</h1>
+	    <span>blablablablablablablablablablablabla</span>
+    </div>
     <br />
 	<div class="divider"></div>	
 	
@@ -20,7 +21,5 @@
             <li><a href="images/4.jpg"><img src="images/4.jpg" alt="" /></a><p>blabla</p></li>
 		</ul>
 	</div>
-</section>
-<div style="text-align:center;clear:both">
-</div>
+
 </asp:Content>

@@ -18,7 +18,7 @@
     	<ul></ul>
     </div>
 </div>
-<div class="homepageParagraph">
+<div class="paragraph">
     <h1>Welcome To KESS InHouse</h1>
     <span>We are a unique team of designers and artists that strive to spread art throughout the home. Our goal is to empower each artist and their story, portrayed through our products. We pride ourselves on affordable pricing for quality artistc products that add lift to any home. KESS puts their own twist on anything from pillows & bedding to shower curtains and canvases! The wide variety of options at KESS allows our customer base to customize their homes with cultivated and creative flare!</span>
     <div class="facebookLike">
@@ -26,7 +26,7 @@
         <span><a href="http://facebook.com" target="_blank">Ria Choi</a>, <a href="http://facebook.com" target="_blank">Nika Martinez</a> and 42,153 others like this.</span>
     </div>
 </div>
-<div class="homepageParagraph">
+<div class="paragraph">
     <h1>COLLECTIONS</h1>
     <script type="text/javascript">
         $(document).ready(function () {
