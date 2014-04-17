@@ -10,7 +10,17 @@ h1,h2,h3,h4,h5,h6
 hr
 {
     width:90%;
+    
 }
+
+hr.hr1
+{
+    width:90%;
+    margin-left:25px;
+    font-size:2;
+    
+}
+
 ul,li
 {
     margin:0;
@@ -140,27 +150,60 @@ ul.imageHolder{
 	padding:0;
 	margin:0;
 }
-ul.imageHolder li{
+ul.imageHolder li
+{
 	float:left;
 	margin-left:15px;
-	margin-bottom:10px;
+	margin-bottom:10px;	
+	text-align:center;
+	text-align:center;
 }
 ul.imageHolder li:hover{
 	border-color:#8DCBE0;
 }
-ul.imageHolder li a{
-	width:200px;
-	height:150px;
+ul.imageHolder li a
+{
+    background-color:#FFF;
+	max-width:200px;
+	max-height:160px;
 	display:block;
 }
-ul.imageHolder li img{
-	width:235px;
-	height:200px;
+ul.imageHolder li img
+{
+	max-width:200px;
+	max-height:160px;
 }
 
 ul.imageHolder li p
 {
     color:#3ea18d
+}
+
+/*-----设计师-----*/
+div.designer
+{ 
+    margin-top:40px; margin-left:25px; margin-bottom:40px; margin-right:60px
+}
+
+div.designer h1
+{ 
+    color:#3ea18d;font-size:x-large
+}
+
+div.designer span
+{
+    font-family:Georgia;
+}
+
+
+/*-----展会-----*/
+.tradeshow
+{
+    padding-right:15px;
+    padding-left:15px;
+    margin-left:25px;
+    margin-bottom:40px;
+    margin-right:60px;
 }
 
 

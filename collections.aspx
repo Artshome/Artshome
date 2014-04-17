@@ -11,6 +11,7 @@
     </script>
 </asp:Content>     
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<hr class="hr1" />
     <div class="paragraph">
         <h1>Pink on back</h1>
 	    <span>blablablablablablablablablablablabla</span>
@@ -19,15 +20,15 @@
 	<div class="divider"></div>	
 	
 	<div class="holder">
-		<ul class="imgset3 imageHolder clearfix">
+		<ul class="imageHolder">
 			<li><a href="collection-pinkOnBlack.aspx"><img src="images/1.jpg" alt="" /></a><p>blabla</p></li>
-			<li><a href="images/2.jpg"><img src="images/2.jpg" alt="" /></a><p>blabla</p></li>
-			<li><a href="images/3.jpg"><img src="images/3.jpg" alt="" /></a><p>blabla</p></li>
-            <li><a href="images/4.jpg"><img src="images/4.jpg" alt="" /></a><p>blabla</p></li>
-			<li><a href="images/1.jpg"><img src="images/1.jpg" alt="" /></a><p>blabla</p></li>
-			<li><a href="images/2.jpg"><img src="images/2.jpg" alt="" /></a><p>blabla</p></li>
-			<li><a href="images/3.jpg"><img src="images/3.jpg" alt="" /></a><p>blabla</p></li>
-            <li><a href="images/4.jpg"><img src="images/4.jpg" alt="" /></a><p>blabla</p></li>
+			<li><a href="images/LONDON.jpg"><img src="images/LONDON.jpg" /></a><p>blabla</p></li>
+			<li><a href="images/PARIS.jpg"><img src="images/PARIS.jpg" alt="" /></a><p>blabla</p></li>
+            <li><a href="images/NY.jpg"><img src="images/NY.jpg" alt="" /></a><p>blabla</p></li>
+			<li><a href="images/ROYALGUARD.jpg"><img src="images/ROYALGUARD.jpg" alt="" /></a><p>blabla</p></li>
+			<li><a href="images//LONDON.jpg"><img src="images/LONDON.jpg" alt="" /></a><p>blabla</p></li>
+			<li><a href="images/PARIS.jpg"><img src="images/PARIS.jpg" alt="" /></a><p>blabla</p></li>
+            <li><a href="images/NY.jpg"><img src="images/NY.jpg" alt="" /></a><p>blabla</p></li>
 		</ul>
 	</div>
 

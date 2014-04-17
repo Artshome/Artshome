@@ -46,9 +46,9 @@
                 <li><a href="Default.aspx">Leaves on Blue</a></li>
                 <li><a href="Default.aspx">Boobooks Owls</a></li>
             </ul></li>
-            <li><a href="Default.aspx">DESIGNERS</a>
+            <li><a href="designer.aspx">DESIGNERS</a>
             <ul>
-                <li><a href="Default.aspx">Julia Grifol</a></li>
+                <li><a href="designer.aspx">Julia Grifol</a></li>
             </ul></li>
             <li><a href="bespoke.aspx">BESPOKE</a>
             <ul>
@@ -56,7 +56,7 @@
                 <li><a href="Default.aspx">TDC</a></li>
                 <li><a href="Default.aspx">ECPLAZA</a></li>
             </ul></li>
-            <li><a href="Default.aspx">TRADE SHOWS</a></li>
+            <li><a href="tradeshow.aspx">TRADE SHOWS</a></li>
             <li><a href="Default.aspx">NEWS</a></li>
             <li><a href="Default.aspx">INFORMATION</a>
             <ul>

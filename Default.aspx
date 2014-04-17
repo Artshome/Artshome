@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="chinaz">
     <ul class="51buypic">
-        <li><a href="Default.aspx" target="_blank"><img src="images/1.jpg" alt="picture"/></a></li>
+        <li><a href="Default.aspx" target="_blank"><img src="images/991453595.jpg" alt="picture"/></a></li>
         <li><a href="Default.aspx" target="_blank"><img src="images/2.jpg" alt="picture"/></a></li>
         <li><a href="Default.aspx" target="_blank"><img src="images/3.jpg" alt="picture" /></a></li>
         <li><a href="Default.aspx" target="_blank"><img src="images/4.jpg" alt="picture"/></a></li>
@@ -33,11 +33,11 @@
 
             var posters1 = new posters('posters1', { className: "posters" },
         [
-        { "img": "images\/6.png", "url": "images\/6.png" },
-        { "img": "images\/7.png", "url": "images\/7.png" },
-        { "img": "images\/8.png", "url": "images\/8.png" },
-        { "img": "images\/9.png", "url": "images\/9.png" },
-        { "img": "images\/10.png", "url": "images\/10.png" },
+        { "img": "images\/LONDON.jpg", "url": "images\/LONDON.jpg" },
+        { "img": "images\/NY.jpg", "url": "images\/NY.jpg" },
+        { "img": "images\/ROYALGUARD.jpg", "url": "images\/ROYALGUARD.jpg" },
+        { "img": "images\/STOCKHOLM.jpg", "url": "images\/STOCKHOLM.jpg" },
+        { "img": "images\/PARIS.jpg", "url": "images\/PARIS.jpg" },
         { "img": "images\/11.png", "url": "images\/11.png" },
         { "img": "images\/12.png", "url": "images\/12.png" },
         ]
