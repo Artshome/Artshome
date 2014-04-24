@@ -1,6 +1,6 @@
 ﻿body 
 {
-    background-image:url(../images/back.gif);
+    background-image:url(../images/bg1.png);
 }
 h1,h2,h3,h4,h5,h6
 {
@@ -16,7 +16,7 @@ hr
 hr.hr1
 {
     width:90%;
-    margin-left:25px;
+    margin:0 auto;
     font-size:2;
     
 }
@@ -39,8 +39,8 @@ image
 }
 span
 {
-    font-family:Georgia;
-   
+    font-family:Segoe UI;
+    
 }
 .mainBody
 {
@@ -129,15 +129,11 @@ span
 }
 .facebookLike span
 {
-    font-family:Georgia;
-    font-size:small;
-    
+    font-size:small;   
 }
 .facebookLike span a
 {
-    font-family:Georgia;
-    font-size:small;
-    
+    font-size:small;   
 }
 
 hr
@@ -145,17 +141,22 @@ hr
     color:#3ea18d;
 }
 /*----收藏品种类----*/
-ul.imageHolder{
+
+
+ul.imageHolder
+{
+    width:850px;
 	list-style:none;
-	padding:0;
-	margin:0;
+	position:relative;
+	margin:0 auto;
+	margin-top:40px;
+	margin-bottom:40px;
 }
 ul.imageHolder li
 {
 	float:left;
 	margin-left:15px;
 	margin-bottom:10px;	
-	text-align:center;
 	text-align:center;
 }
 ul.imageHolder li:hover{
@@ -180,21 +181,24 @@ ul.imageHolder li p
 }
 
 /*-----设计师-----*/
-div.designer
+.designer
 { 
-    margin-top:40px; margin-left:25px; margin-bottom:40px; margin-right:60px
+    margin-top:40px; margin-left:60px; margin-bottom:40px; margin-right:60px
 }
-
-div.designer h1
-{ 
-    color:#3ea18d;font-size:x-large
-}
-
-div.designer span
+.designer img
 {
-    font-family:Georgia;
+    max-width:300px;
+    max-height:600px;
+    float:right;
+    margin-bottom:40px;
+    border-radius:12px;
 }
-
+.designer .description
+{
+    width:400px;
+    line-height:25px;
+    word-break:normal;   
+}
 
 /*-----展会-----*/
 .tradeshow

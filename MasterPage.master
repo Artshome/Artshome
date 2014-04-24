@@ -1,9 +1,9 @@
-﻿<%@ master language="C#" autoeventwireup="true" inherits="MasterPage, App_Web_1aohfspa" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title>Artshome</title>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/jquery.lightbox-0.5.css" rel="stylesheet" type="text/css" />
@@ -19,10 +19,17 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    
     <div class="mainBody">
     <form id="form1" runat="server">
+    <%
+        Dbc dbc = new Dbc();
+        List<Designer> designers = dbc.GetALLDesigner();
+        
+        
+         %>
     <div class="head">
-        <img class="logo" src="images/logo.jpg" alt="Artshome" />
+        <img class="logo" src="images/logo.png" alt="Artshome" />
         <div class="headControls">
             <a href="http://facebook.com" target="_blank"><img class="icon" src="images/facebook.png" alt="facebook" /></a>
             <br /><br />
@@ -48,7 +55,16 @@
             </ul></li>
             <li><a href="designer.aspx">DESIGNERS</a>
             <ul>
-                <li><a href="designer.aspx">Julia Grifol</a></li>
+            <%
+                foreach (Designer designer in designers)
+                {
+                    %>
+                    <li><a href="designer.aspx?designerName=<%=designer.Name %>"><%=designer.Name %></a></li>
+                    <%
+
+                }     
+                
+            %>
             </ul></li>
             <li><a href="bespoke.aspx">BESPOKE</a>
             <ul>
@@ -73,7 +89,7 @@
     </form>
     <div class="foot">
     <hr />
-    C Arts Home<br /><br />
+    © Arts Home<br /><br />
     
     <span style="font-size:x-small; margin-top:20px;">Design by Arts Home</span>
     </div>
