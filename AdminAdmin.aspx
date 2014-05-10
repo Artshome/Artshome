@@ -10,10 +10,6 @@
 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>
-<%
-    Dbc dbc = new Dbc();
-    List<Admin> admins = dbc.GetALLAdmin();
-%>
 <h2>Admin Settings</h2>            
 <table id="rounded-corner">
     <thead>

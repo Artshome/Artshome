@@ -8,11 +8,14 @@ using System.Web.UI.WebControls;
 public partial class AdminDesigner : System.Web.UI.Page
 {
     private Dbc dbc = new Dbc();
-    private Designer designer = new Designer();
-    private List<Designer> designers = new List<Designer>();
+    protected static List<Designer> designers = new List<Designer>();
     protected void Page_Load(object sender, EventArgs e)
     {
-        button6.Attributes.Add("onclick", "return confirm('Delete confirmed?');"); 
+        if (!IsPostBack)
+        {
+            designers = dbc.GetALLDesigner();
+            button6.Attributes.Add("onclick", "return confirm('Delete confirmed?');");
+        }
     }
     protected void button1_Click(object sender, EventArgs e)
     {
@@ -26,7 +29,6 @@ public partial class AdminDesigner : System.Web.UI.Page
     }
     protected void button2_Click(object sender, EventArgs e)
     {
-        designers = dbc.GetALLDesigner();
         DropDownList1.Items.Clear();
         foreach (Designer designer in designers)
         {
@@ -45,7 +47,6 @@ public partial class AdminDesigner : System.Web.UI.Page
     }
     protected void button3_Click(object sender, EventArgs e)
     {
-        designers = dbc.GetALLDesigner();
         DropDownList2.Items.Clear();
         foreach (Designer designer in designers)
         {
@@ -60,16 +61,15 @@ public partial class AdminDesigner : System.Web.UI.Page
     protected void button4_Click(object sender, EventArgs e)
     {
         Label6.Text = Label7.Text = Label8.Text = String.Empty;
-
         if (textbox1.Text.Equals(String.Empty) ||
             textbox2.Text.Equals(String.Empty) ||
-            FileUpload1.HasFile == false)
+            !FileUpload1.HasFile)
         {
             if (textbox1.Text.Equals(String.Empty))
                 Label6.Text = "*";
             if (textbox2.Text.Equals(String.Empty))
                 Label7.Text = "*";
-            if (FileUpload1.HasFile == false)
+            if (!FileUpload1.HasFile)
                 Label8.Text = "*";
             Label21.Text = "Input mark by * is required.";
             panel5.Visible = true;
@@ -86,6 +86,7 @@ public partial class AdminDesigner : System.Web.UI.Page
                 String mappath = Server.MapPath(designer.ImageUrl);
                 FileUpload1.PostedFile.SaveAs(mappath);
                 dbc.AddDesigner(designer);
+                designers.Add(designer);
                 panel1.Visible = false;
                 Label20.Text = "Successfully Added.";
                 panel4.Visible = true;
@@ -108,11 +109,11 @@ public partial class AdminDesigner : System.Web.UI.Page
     {
         Label14.Text = Label15.Text = String.Empty;
 
-        if (textbox3.Text.Equals(String.Empty) || (checkbox1.Checked == false && FileUpload2.HasFile == false))
+        if (textbox3.Text.Equals(String.Empty) || (checkbox1.Checked == false && !FileUpload2.HasFile))
         {
             if (textbox3.Text.Equals(String.Empty))
                 Label14.Text = "*";
-            if (checkbox1.Checked == false && FileUpload2.HasFile == false)
+            if (checkbox1.Checked == false && !FileUpload2.HasFile)
                 Label15.Text = "*";
             Label21.Text = "Input mark by * is required.";
             panel5.Visible = true;
@@ -134,6 +135,16 @@ public partial class AdminDesigner : System.Web.UI.Page
                 FileUpload2.PostedFile.SaveAs(mappath);
             }
             dbc.UpdateDesigner(designer);
+            foreach (Designer d in designers)
+            {
+                if (d.Name == designer.Name)
+                {
+                    d.ImageUrl = designer.ImageUrl;
+                    d.Description = designer.Description;
+                    break;
+                }
+
+            }
             panel2.Visible = false;
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
@@ -150,6 +161,14 @@ public partial class AdminDesigner : System.Web.UI.Page
         try
         {
             dbc.DeleteDesigner(DropDownList2.SelectedItem.ToString());
+            for (int i = 0; i < designers.Count; i++)
+            {
+                if (designers[i].Name == DropDownList2.SelectedItem.ToString())
+                {
+                    designers.RemoveAt(i);
+                    break;
+                }
+            }
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
             panel4.Visible = true;
@@ -161,11 +180,17 @@ public partial class AdminDesigner : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        designer = dbc.GetDesignerByName(DropDownList1.SelectedItem.ToString());
-        textbox3.Text = designer.Description;
+        foreach (Designer designer in designers)
+        {
+            if (designer.Name == DropDownList1.SelectedItem.ToString())
+            {
+                textbox3.Text = designer.Description;
+                break;
+            }
+        }
     }
     protected void checkbox1_CheckedChanged(object sender, EventArgs e)
     {
-        FileUpload2.Visible = checkbox1.Checked == true ? false : true;
+        FileUpload2.Visible = checkbox1.Checked? false : true;
     }
 }

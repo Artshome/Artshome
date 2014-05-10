@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 public class Dbc
 {
-    private readonly String HOSTSTR = "Server=a2a5bad2-d4fc-47f9-b241-a2ed00d7fc16.sqlserver.sequelizer.com;Database=dba2a5bad2d4fc47f9b241a2ed00d7fc16;User ID=tnucjrzwvfrcgpqd;Password=mHVvDSviXMhKcMseBMbVNP4Vh3jhscQ78mgy2jRciNpRGuYn4LKLHZBEN8oJGoYU;";
+    private readonly String HOSTSTR = @"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|Database.mdf;Integrated Security=True";
     private SqlConnection dbConnection;
     private SqlCommand cmd;
 	public Dbc()
@@ -124,7 +124,7 @@ public class Dbc
         {
             dbConnection.Open();
             
-            cmd = new SqlCommand("Select * from Table_Collection where designername='" + designerName + "'", dbConnection);
+            cmd = new SqlCommand("Select * from Table_Collection where designer='" + designerName + "'", dbConnection);
             SqlDataReader result = cmd.ExecuteReader();
             List<Collection> collections = new List<Collection>();
             while (result.Read())
@@ -186,10 +186,10 @@ public class Dbc
         {
             dbConnection.Open();
             cmd = new SqlCommand("insert into Table_Product values('"
-                + product.ImageUrl + "','"
-                + product.Size + "','"
-                + product.Shape + "','"
                 + product.Code + "','"
+                + product.Shape + "','"
+                + product.Size + "','"
+                + product.ImageUrl + "','"
                 + product.CollectionName + "')"
                 , dbConnection);
             cmd.ExecuteNonQuery();
@@ -233,10 +233,10 @@ public class Dbc
         try
         {
             dbConnection.Open();
-            cmd = new SqlCommand("update Table_Product set imageUrl='"
-                + product.ImageUrl + "',size='"
-                + product.Size + "',shape='"
-                + product.Shape + "',collectionName='"
+            cmd = new SqlCommand("update Table_Product set shape='"
+                + product.Shape + "',size='"
+                + product.Size + "',imageUrl='"
+                + product.ImageUrl + "',collection='"
                 + product.CollectionName + "' where code='"
                 + product.Code + "'", dbConnection);
             cmd.ExecuteNonQuery();
@@ -260,7 +260,7 @@ public class Dbc
         {
             dbConnection.Open();
 
-            cmd = new SqlCommand("Select * from Table_Product where designername='" + collectionName + "'", dbConnection);
+            cmd = new SqlCommand("Select * from Table_Product where collection='" + collectionName + "'", dbConnection);
             SqlDataReader result = cmd.ExecuteReader();
             List<Product> products = new List<Product>();
             while (result.Read())

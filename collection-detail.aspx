@@ -7,10 +7,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<%Dbc dbc = new Dbc();
-  List<Product> productslist = dbc.GetProductByCollectionName(Request["collectionName"]);
-  Collection collection = dbc.GetCollectionByName(Request["collectionName"]);
-  %>
+
 	<div class="paragraph">
         <h1><%=collection.Name %></h1>
 	    <span><%=collection.Description %></span>

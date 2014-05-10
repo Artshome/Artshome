@@ -10,10 +10,6 @@
 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>
-<%
-    Dbc dbc = new Dbc();
-    List<Designer> designers = dbc.GetALLDesigner();
-%>
 <h2>Designer Settings</h2> 
 <table id="rounded-corner">
     <thead>
@@ -69,7 +65,7 @@
 
 <asp:Panel ID="panel2" Visible="false" runat="server">
 <div style="margin-left:20px;">
-    <asp:Label runat="server" ID="Label10" Text="Select an Collection to Update" style="font-size:large" /><br /><br />
+    <asp:Label runat="server" ID="Label10" Text="Select an Designer to Update" style="font-size:large" /><br /><br />
     <asp:Label runat="server" ID="Label11" Text="Collection Name" /><br />
     <asp:DropDownList runat="server" ID="DropDownList1" 
         style="width:150px;margin-left:0px;" AutoPostBack="True" 

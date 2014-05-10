@@ -10,10 +10,6 @@
 <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>
-<%
-    Dbc dbc = new Dbc();
-    List<Collection> collections = dbc.GetALLCollection();
-%>
 <h2>Collection Settings</h2> 
 <table id="rounded-corner">
     <thead>

@@ -8,11 +8,14 @@ using System.Web.UI.WebControls;
 public partial class AdminAdmin : System.Web.UI.Page
 {
     private Dbc dbc =new Dbc();
-    private Admin admin = new Admin();
-    private List<Admin> admins = new List<Admin>();
+    protected static List<Admin> admins = new List<Admin>();
     protected void Page_Load(object sender, EventArgs e)
     {
-        button6.Attributes.Add("onclick", "return confirm('Delete confirmed?');"); 
+        if (!IsPostBack)
+        {
+            admins = dbc.GetALLAdmin();
+            button6.Attributes.Add("onclick", "return confirm('Delete confirmed?');");
+        }
     }
 
     protected void button1_Click(object sender, EventArgs e)
@@ -26,7 +29,6 @@ public partial class AdminAdmin : System.Web.UI.Page
     }
     protected void button2_Click(object sender, EventArgs e)
     {
-        admins= dbc.GetALLAdmin();
         DropDownList1.Items.Clear();
         foreach (Admin admin in admins)
         {
@@ -42,7 +44,6 @@ public partial class AdminAdmin : System.Web.UI.Page
     }
     protected void button3_Click(object sender, EventArgs e)
     {
-        admins = dbc.GetALLAdmin();
         DropDownList2.Items.Clear();
         foreach (Admin admin in admins)
         {
@@ -90,6 +91,7 @@ public partial class AdminAdmin : System.Web.UI.Page
                 admin.DesignerPermission = checkbox3.Checked == true ? 1 : 0;
                 admin.SuperPermission = checkbox4.Checked == true ? 1 : 0;
                 dbc.AddAdmin(admin);
+                admins.Add(admin);
                 panel1.Visible = false;
                 Label20.Text = "Successfully Added.";
                 panel4.Visible = true;
@@ -136,6 +138,18 @@ public partial class AdminAdmin : System.Web.UI.Page
             admin.DesignerPermission = checkbox7.Checked == true ? 1 : 0;
             admin.SuperPermission = checkbox8.Checked == true ? 1 : 0;
             dbc.UpdateAdmin(admin);
+            for (int i = 0; i < admins.Count; i++)
+            {
+                if (admins[i].Name == admin.Name)
+                {
+                    admins[i].Password = admin.Password;
+                    admins[i].DesignerPermission = admin.DesignerPermission;
+                    admins[i].SuperPermission = admin.SuperPermission;
+                    admins[i].CollectionPermission = admin.CollectionPermission;
+                    admins[i].ProductPermission = admin.ProductPermission;
+                    break;
+                }
+            }
             panel2.Visible = false;
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
@@ -151,6 +165,14 @@ public partial class AdminAdmin : System.Web.UI.Page
         try
         {
             dbc.DeleteAdmin(DropDownList2.SelectedItem.ToString());
+            for (int i = 0; i < admins.Count; i++)
+            {
+                if (admins[i].Name == DropDownList2.SelectedItem.ToString())
+                {
+                    admins.RemoveAt(i);
+                    break;
+                }
+            }
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
             panel4.Visible = true;
@@ -162,11 +184,17 @@ public partial class AdminAdmin : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        admin = dbc.GetAdminByName(DropDownList1.SelectedItem.ToString());
-        checkbox5.Checked = admin.ProductPermission == 1 ? true : false;
-        checkbox6.Checked = admin.CollectionPermission == 1 ? true : false;
-        checkbox7.Checked = admin.DesignerPermission == 1 ? true : false;
-        checkbox8.Checked = admin.SuperPermission == 1 ? true : false;
+        foreach (Admin admin in admins)
+        {
+            if (admin.Name == DropDownList1.SelectedItem.ToString())
+            {
+                checkbox5.Checked = admin.ProductPermission == 1 ? true : false;
+                checkbox6.Checked = admin.CollectionPermission == 1 ? true : false;
+                checkbox7.Checked = admin.DesignerPermission == 1 ? true : false;
+                checkbox8.Checked = admin.SuperPermission == 1 ? true : false;
+                break;
+            }
+        }
     }
 
     
