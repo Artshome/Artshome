@@ -69,8 +69,8 @@
 
 <asp:Panel ID="panel2" Visible="false" runat="server">
 <div style="margin-left:20px;">
-    <asp:Label runat="server" ID="Label10" Text="Select an Designer to Update" style="font-size:large" /><br /><br />
-    <asp:Label runat="server" ID="Label11" Text="Designer Name" /><br />
+    <asp:Label runat="server" ID="Label10" Text="Select an Collection to Update" style="font-size:large" /><br /><br />
+    <asp:Label runat="server" ID="Label11" Text="Collection Name" /><br />
     <asp:DropDownList runat="server" ID="DropDownList1" 
         style="width:150px;margin-left:0px;" AutoPostBack="True" 
         onselectedindexchanged="DropDownList1_SelectedIndexChanged" >

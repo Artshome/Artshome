@@ -89,6 +89,7 @@ public partial class AdminDesigner : System.Web.UI.Page
                 panel1.Visible = false;
                 Label20.Text = "Successfully Added.";
                 panel4.Visible = true;
+                panel5.Visible = false;
                 return;
             }
             else
@@ -136,6 +137,7 @@ public partial class AdminDesigner : System.Web.UI.Page
             panel2.Visible = false;
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
+            panel5.Visible = false;
             return;
         }
         catch (Exception e1)

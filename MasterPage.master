@@ -25,9 +25,8 @@
     <%
         Dbc dbc = new Dbc();
         List<Designer> designers = dbc.GetALLDesigner();
-        
-        
-         %>
+        List<Collection> collections = dbc.GetALLCollection();    
+    %>
     <div class="head">
         <img class="logo" src="images/logo.png" alt="Artshome" />
         <div class="headControls">
@@ -45,13 +44,18 @@
     <div id="navmenu">
 	    <ul>
             <li><a href="Default.aspx">HOME</a></li>
-            <li><a href="Default.aspx">COLLECTIONS</a>
+            <li><a href="collections.aspx">COLLECTIONS</a>
             <ul>
-                <li><a href="collections.aspx">Pink on Black</a></li>
-                <li><a href="Default.aspx">Flower and Butterfly in Blue</a></li>
-                <li><a href="Default.aspx">Diamond shape</a></li>
-                <li><a href="Default.aspx">Leaves on Blue</a></li>
-                <li><a href="Default.aspx">Boobooks Owls</a></li>
+            <%
+                foreach (Collection collection in collections)
+                {
+                    %>
+                    <li><a href="collection-detail.aspx?collectionName=<%=collection.Name %>"><%=collection.Name %></a></li>
+                    <%
+
+                }     
+                
+            %>
             </ul></li>
             <li><a href="designer.aspx">DESIGNERS</a>
             <ul>

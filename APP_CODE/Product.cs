@@ -15,6 +15,7 @@ public class Product
     private String shape;
     private String size;
     private String imageUrl;
+    private String collectionname;
 
     public String ImageUrl
     {
@@ -35,6 +36,11 @@ public class Product
     {
         get { return code; }
         set { code = value; }
+    }
+    public String CollectionName
+    {
+        get { return collectionname; }
+        set { collectionname = value; }
     }
 
 }

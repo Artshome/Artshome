@@ -16,6 +16,7 @@ public class Collection
     private String description;
     private String imageUrl;
     private List<Product> product;
+    private String designername;
 
     public List<Product> Product
     {
@@ -37,5 +38,10 @@ public class Collection
     {
         get { return name; }
         set { name = value; }
+    }
+    public String DesignerName
+    {
+        get { return designername; }
+        set { designername = value; }
     }
 }

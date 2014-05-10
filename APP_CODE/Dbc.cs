@@ -14,6 +14,278 @@ public class Dbc
 	{
         dbConnection = new SqlConnection(HOSTSTR);
 	}
+    //添加新的collection
+    public bool AddCollection(Collection collection)
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("insert into Table_Collection values('"
+                + collection.Name + "','"
+                + collection.Description + "','"
+                + collection.ImageUrl + "','"
+                +collection.DesignerName+"')"
+                , dbConnection);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //删除collection
+    public bool DeleteCollection(String name)
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("delete from Table_Collection where name = '" + name + "'", dbConnection);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //更新已有的collection
+    public bool UpdateCollection(Collection collection)
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("update Table_Colletion set description='"
+                + collection.Description + "',imageUrl='"
+                + collection.ImageUrl + "' designerName='"
+                + collection.DesignerName + "' where name='"
+                +collection.Name + "'", dbConnection);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //读取所有collection
+    public List<Collection> GetALLCollection()
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("Select * from Table_Collection", dbConnection);
+            SqlDataReader result = cmd.ExecuteReader();
+            List<Collection> collections = new List<Collection>();
+            while (result.Read())
+            {
+                Collection collection = new Collection();
+                collection.Name = result.GetString(0);
+                collection.Description = result.GetString(1);
+                collection.ImageUrl = result.GetString(2);
+                collection.DesignerName = result.GetString(3);
+                collections.Add(collection);
+            }
+            return collections;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return null;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //根据设计师名读取collection
+    public List<Collection> GetCollectionByDesignerName(String designerName)
+    {
+        try
+        {
+            dbConnection.Open();
+            
+            cmd = new SqlCommand("Select * from Table_Collection where designername='" + designerName + "'", dbConnection);
+            SqlDataReader result = cmd.ExecuteReader();
+            List<Collection> collections = new List<Collection>();
+            while (result.Read())
+            {
+                Collection collection = new Collection();
+                collection.Name = result.GetString(0);
+                collection.Description = result.GetString(1);
+                collection.ImageUrl = result.GetString(2);
+                collection.DesignerName = result.GetString(3);
+                collections.Add(collection);
+            }
+            return collections;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return null;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //根据名称读取collection
+    public Collection GetCollectionByName(String name)
+    {
+        try
+        {
+            dbConnection.Open();
+
+            cmd = new SqlCommand("Select * from Table_Collection where name='" + name + "'", dbConnection);
+            SqlDataReader result = cmd.ExecuteReader();
+            while (result.Read())
+            {
+                Collection collection = new Collection();
+                collection.Name = result.GetString(0);
+                collection.Description = result.GetString(1);
+                collection.ImageUrl = result.GetString(2);
+                collection.DesignerName = result.GetString(3);
+                return collection;
+            }
+            return null;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return null;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+    //添加新的product
+    public bool AddProduct (Product  product)
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("insert into Table_Product values('"
+                + product.ImageUrl + "','"
+                + product.Size + "','"
+                + product.Shape + "','"
+                + product.Code + "','"
+                + product.CollectionName + "')"
+                , dbConnection);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //删除product
+    public bool DeleteProduct(String code)
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("delete from Table_Product where code = '" + code + "'", dbConnection);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //更新product
+    public bool UpdateProduct(Product product)
+    {
+        try
+        {
+            dbConnection.Open();
+            cmd = new SqlCommand("update Table_Product set imageUrl='"
+                + product.ImageUrl + "',size='"
+                + product.Size + "',shape='"
+                + product.Shape + "',collectionName='"
+                + product.CollectionName + "' where code='"
+                + product.Code + "'", dbConnection);
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return false;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
+    //根据collection名读取product
+    public List<Product> GetProductByCollectionName(String collectionName)
+    {
+        try
+        {
+            dbConnection.Open();
+
+            cmd = new SqlCommand("Select * from Table_Product where designername='" + collectionName + "'", dbConnection);
+            SqlDataReader result = cmd.ExecuteReader();
+            List<Product> products = new List<Product>();
+            while (result.Read())
+            {
+                Product product = new Product();
+                product.ImageUrl = result.GetString(0);
+                product.Size = result.GetString(1);
+                product.Shape = result.GetString(2);
+                product.Code = result.GetString(3);
+                product.CollectionName = result.GetString(4);
+                products.Add(product);
+            }
+            return products;
+        }
+        catch (Exception e)
+        {
+            Console.Write(e.ToString());
+            return null;
+        }
+        finally
+        {
+            dbConnection.Close();
+        }
+    }
+
     //添加新设计师
     public bool AddDesigner(Designer designer)
     {

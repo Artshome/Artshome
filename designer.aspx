@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <%Dbc dbc = new Dbc();
-  Designer designer = dbc.GetDesignerByName(Request["designerName"]); 
+  Designer designer = dbc.GetDesignerByName(Request["designerName"]);
+  List<Collection> collections = dbc.GetCollectionByDesignerName(Request["desigerName"]);
     %>
 <hr class="hr1" />
 <div class="designer">
@@ -18,12 +19,14 @@
     </div>
 </div>
 <hr class="hr1" />
+     <div class="holeder">
 		<ul class="imageHolder">
-			<li><a href="collection-pinkOnBlack.aspx"><img src="images/PARIS.jpg" alt="" align="absmiddle"/></a><p>PARIS</p></li>
-			<li><a href="collections.aspx"><img src="images/LONDON.jpg" alt="" align="absmiddle"/></a><p>LONDON</p></li>
-            <li><a href="collections.aspx"><img src="images/NY.jpg" alt="" align="absmiddle"/></a><p>NEW YORK</p></li>
-			<li><a href="collections.aspx"><img src="images/ROYALGUARD.jpg" alt="" align="absmiddle"/></a><p>ROYAL GUARD</p></li>
-			<li><a href="collections.aspx"><img src="images/STOCKHOLM.jpg" alt="" align="absmiddle"/></a><p>STOCKHOLM</p></li>
+			<li><a href="collection-detail.aspx"><img src="images/PARIS.jpg" alt="" align="absmiddle"/><p>PARIS</p></a></li>
+			<li><a href="collections.aspx"><img src="images/LONDON.jpg" alt="" align="absmiddle"/><p>LONDON</p></a></li>
+            <li><a href="collections.aspx"><img src="images/NY.jpg" alt="" align="absmiddle"/><p>NEW YORK</p></a></li>
+			<li><a href="collections.aspx"><img src="images/ROYALGUARD.jpg" alt="" align="absmiddle"/><p>ROYAL GUARD</p></a></li>
+			<li><a href="collections.aspx"><img src="images/STOCKHOLM.jpg" alt="" align="absmiddle"/><p>STOCKHOLM</p></a></li>
         </ul>
+     </div>
 
 </asp:Content>
