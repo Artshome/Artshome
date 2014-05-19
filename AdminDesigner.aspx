@@ -7,9 +7,7 @@
        Response.Redirect("AdminDefault.aspx");
    }
 %>
-<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-<ContentTemplate>
+
 <h2>Designer Settings</h2> 
 <table id="rounded-corner">
     <thead>
@@ -19,14 +17,14 @@
             <th scope="col" class="rounded">ImageUrl</th>
         </tr>
     </thead>
-    <% foreach (Designer designer in designers)
+    <% foreach (Table_Designer designer in designers)
        {
            %>
     <tbody>
     	<tr>
-            <td><%=designer.Name%></td>
-            <td><%=designer.Description.Length>100?designer.Description.Substring(0, 100)+"...":designer.Description %></td>
-            <td><%=designer.ImageUrl%></td>
+            <td><%=designer.name%></td>
+            <td><%=designer.description.Length>100?designer.description.Substring(0, 100)+"...":designer.description %></td>
+            <td><%=designer.imageUrl%></td>
         </tr>
     </tbody>
     <%}%>
@@ -99,11 +97,5 @@
 </asp:Panel>
 
 
-</ContentTemplate>
-<Triggers>
-<asp:PostBackTrigger ControlID="button4" />
-<asp:PostBackTrigger ControlID="button5" />
-</Triggers>
-</asp:UpdatePanel>
 </asp:Content>
 

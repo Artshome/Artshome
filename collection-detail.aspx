@@ -9,8 +9,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 	<div class="paragraph">
-        <h1><%=collection.Name %></h1>
-	    <span><%=collection.Description %></span>
+        <h1><%=collection.name %></h1>
+	    <span><%=collection.description %></span>
     </div>
     <div>
 	  <table class="imgset1 collectionTable clearfix">
@@ -20,13 +20,13 @@
         <th>CODE</th>
         </tr>
         <%
-            foreach(Product product in productslist)
+            foreach(Table_Product product in productslist)
             {
                 %>
                 <tr>
-                    <td class="td1"><p><a href="<%=product.ImageUrl %>" rel="lightbox"><img src="<%=product.ImageUrl %>" alt="" /></a></p></td>            
-                    <td class="td2"><%=product.Size %></td>
-                    <td class="td1"><%=product.Code %></td>
+                    <td class="td1"><p><a href="<%=product.imageUrl %>" rel="lightbox"><img src="<%=product.imageUrl %>" alt="" /></a></p></td>            
+                    <td class="td2"><%=product.size %></td>
+                    <td class="td1"><%=product.code %></td>
                 </tr>
                 <%
                 }

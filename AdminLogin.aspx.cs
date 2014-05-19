@@ -27,10 +27,10 @@ public partial class AdminLogin : System.Web.UI.Page
         try
         {
             Dbc dbc = new Dbc();
-            Admin admin = dbc.GetAdminByName(this.textbox1.Text);
-            if (admin!=null && admin.Password == this.textbox2.Text)
+            Table_Admin admin = dbc.GetAdminByName(this.textbox1.Text);
+            if (admin!=null && admin.password == this.textbox2.Text)
             {
-                Session["adminName"] = admin.Name.Trim();
+                Session["adminName"] = admin.name.Trim();
                 ScriptManager.RegisterStartupScript(UpdatePanel1, UpdatePanel1.GetType(), "updateScript", "window.location.href='AdminDefault.aspx'", true);
                 return;
             }

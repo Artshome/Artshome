@@ -7,9 +7,7 @@
        Response.Redirect("AdminDefault.aspx");
    }
 %>
-<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-<ContentTemplate>
+
 <h2>Collection Settings</h2> 
 <table id="rounded-corner">
     <thead>
@@ -20,15 +18,15 @@
             <th scope="col" class="rounded">ImageUrl</th>
         </tr>
     </thead>
-    <% foreach (Collection collection in collections)
+    <% foreach (Table_Collection collection in collections)
        {
            %>
     <tbody>
     	<tr>
-            <td><%=collection.Name%></td>
-            <td><%=collection.Description.Length > 100 ? collection.Description.Substring(0, 100) + "..." : collection.Description%></td>
-            <td><%=collection.DesignerName %></td>
-            <td><%=collection.ImageUrl%></td>
+            <td><%=collection.name%></td>
+            <td><%=collection.description.Length > 100 ? collection.description.Substring(0, 100) + "..." : collection.description%></td>
+            <td><%=collection.designer %></td>
+            <td><%=collection.imageUrl%></td>
         </tr>
     </tbody>
     <%}%>
@@ -110,11 +108,5 @@
 </asp:Panel>
 
 
-</ContentTemplate>
-<Triggers>
-<asp:PostBackTrigger ControlID="button4" />
-<asp:PostBackTrigger ControlID="button5" />
-</Triggers>
-</asp:UpdatePanel>
 </asp:Content>
 

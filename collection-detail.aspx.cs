@@ -8,8 +8,8 @@ using System.Web.UI.WebControls;
 public partial class Default2 : System.Web.UI.Page
 {
     private Dbc dbc = new Dbc();
-    protected static List<Product> productslist = new List<Product>();
-    protected static Collection collection = new Collection();
+    protected static List<Table_Product> productslist = new List<Table_Product>();
+    protected static Table_Collection collection = new Table_Collection();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)

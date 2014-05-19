@@ -24,8 +24,8 @@
     <form id="form1" runat="server">
     <%
         Dbc dbc = new Dbc();
-        List<Designer> designers = dbc.GetALLDesigner();
-        List<Collection> collections = dbc.GetALLCollection();    
+        List<Table_Designer> designers = dbc.GetALLDesigner();
+        List<Table_Collection> collections = dbc.GetALLCollection();    
     %>
     <div class="head">
         <img class="logo" src="images/logo.png" alt="Artshome" />
@@ -47,23 +47,23 @@
             <li><a href="collections.aspx">COLLECTIONS</a>
             <ul>
             <%
-                foreach (Collection collection in collections)
+                foreach (Table_Collection collection in collections)
                 {
                     %>
-                    <li><a href="collection-detail.aspx?collectionName=<%=collection.Name %>"><%=collection.Name %></a></li>
+                    <li><a href="collection-detail.aspx?collectionName=<%=collection.name %>"><%=collection.name %></a></li>
                     <%
 
                 }     
                 
             %>
             </ul></li>
-            <li><a href="designer.aspx">DESIGNERS</a>
+            <li><a href="#">DESIGNERS</a>
             <ul>
             <%
-                foreach (Designer designer in designers)
+                foreach (Table_Designer designer in designers)
                 {
                     %>
-                    <li><a href="designer.aspx?designerName=<%=designer.Name %>"><%=designer.Name %></a></li>
+                    <li><a href="designer.aspx?designerName=<%=designer.name %>"><%=designer.name %></a></li>
                     <%
 
                 }     
@@ -72,20 +72,20 @@
             </ul></li>
             <li><a href="bespoke.aspx">BESPOKE</a>
             <ul>
-                <li><a href="Default.aspx">NEWTOP</a></li>
-                <li><a href="Default.aspx">TDC</a></li>
-                <li><a href="Default.aspx">ECPLAZA</a></li>
+                <li><a href="#">NEWTOP</a></li>
+                <li><a href="#">TDC</a></li>
+                <li><a href="#">ECPLAZA</a></li>
             </ul></li>
             <li><a href="tradeshow.aspx">TRADE SHOWS</a></li>
-            <li><a href="Default.aspx">NEWS</a></li>
-            <li><a href="Default.aspx">INFORMATION</a>
+            <li><a href="#">NEWS</a></li>
+            <li><a href="#">INFORMATION</a>
             <ul>
-                <li><a href="Default.aspx">ABOUT US</a></li>
-                <li><a href="Default.aspx">PRODUCT INFO</a></li>
-                <li><a href="Default.aspx">DELIVERY INFO</a></li>
-                <li><a href="Default.aspx">CERTIFICATE</a></li>
+                <li><a href="about.aspx">ABOUT US</a></li>
+                <li><a href="#">PRODUCT INFO</a></li>
+                <li><a href="#">DELIVERY INFO</a></li>
+                <li><a href="#">CERTIFICATE</a></li>
             </ul></li>
-            <li><a href="Default.aspx">CONTACT</a></li>
+            <li><a href="contact.aspx">CONTACT</a></li>
         </ul>
     </div>
     

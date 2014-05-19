@@ -8,8 +8,8 @@ using System.Web.UI.WebControls;
 public partial class designer : System.Web.UI.Page
 {
     private Dbc dbc = new Dbc();
-    protected static Designer _designer = new Designer();
-    protected static List<Collection> collections = new List<Collection>();
+    protected static Table_Designer _designer = new Table_Designer();
+    protected static List<Table_Collection> collections = new List<Table_Collection>();
 
     protected void Page_Load(object sender, EventArgs e)
     {

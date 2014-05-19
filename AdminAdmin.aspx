@@ -22,16 +22,16 @@
             <th scope="col" class="rounded">Super Permission</th>
         </tr>
     </thead>
-    <% foreach(Admin admin in admins){
+    <% foreach(Table_Admin admin in admins){
            %>
     <tbody>
     	<tr>
-            <td><%=admin.Name %></td>
-            <td><%=admin.Password %></td>
-            <td><%=admin.ProductPermission == 1 ? "Yes" : "No" %></td>
-            <td><%=admin.CollectionPermission == 1 ? "Yes" : "No" %></td>
-            <td><%=admin.DesignerPermission == 1 ? "Yes" : "No" %></td>
-            <td><%=admin.SuperPermission == 1 ? "Yes" : "No" %></td>
+            <td><%=admin.name %></td>
+            <td><%=admin.password %></td>
+            <td><%=admin.productPermission == 1 ? "Yes" : "No" %></td>
+            <td><%=admin.collectionPermission == 1 ? "Yes" : "No" %></td>
+            <td><%=admin.designerPermission == 1 ? "Yes" : "No" %></td>
+            <td><%=admin.superPermission == 1 ? "Yes" : "No" %></td>
         </tr>
     </tbody>
     <%}%>

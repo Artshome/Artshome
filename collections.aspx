@@ -11,10 +11,10 @@
 	<div class="holder">
 		<ul class="imageHolder">
             <%
-                foreach(Collection collection in collectionslist)
+                foreach(Table_Collection collection in collectionslist)
                 {
                     %>
-                    <li><a href="collection-detail.aspx?collectionName=<%=collection.Name %>"><img src="<%=collection.ImageUrl %>" alt="" /><%=collection.Name %></a></li>
+                    <li><a href="collection-detail.aspx?collectionName=<%=collection.name %>"><img src="<%=collection.imageUrl %>" alt="" /><%=collection.name %></a></li>
                     <%                                                                                               
                 }
             %>

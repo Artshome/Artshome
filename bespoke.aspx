@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" masterpagefile="~/MasterPage.master" AutoEventWireup="true" CodeFile="bespoke.aspx.cs" Inherits="bespoke" %>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class=bespoke>
-    <img src="images/1.jpg" />
+<div class="bespoke">
+    <img src="images/banners/1.jpg" />
     <h1>BESPOKE</h1>
     <span>Whether you are a retailer, corporation, museum or designer Åry Trays can turn your images or fabric into the finest quality trays unique to you.</span>
     <p></p>

@@ -17,11 +17,11 @@
         Response.Redirect("AdminLogin.aspx");
     }
     Dbc dbc = new Dbc();
-    Admin admin = dbc.GetAdminByName(Session["adminName"].ToString());
-    Session["productPermission"] = admin.ProductPermission == 1 ? "true" : "false";
-    Session["collectionPermission"] = admin.CollectionPermission == 1 ? "true" : "false";
-    Session["designerPermission"] = admin.DesignerPermission == 1 ? "true" : "false";
-    Session["superPermission"] = admin.SuperPermission == 1 ? "true" : "false";
+    Table_Admin admin = dbc.GetAdminByName(Session["adminName"].ToString());
+    Session["productPermission"] = admin.productPermission == 1 ? "true" : "false";
+    Session["collectionPermission"] = admin.collectionPermission == 1 ? "true" : "false";
+    Session["designerPermission"] = admin.designerPermission == 1 ? "true" : "false";
+    Session["superPermission"] = admin.superPermission == 1 ? "true" : "false";
        %>
 <div id="main_container">
 	<div class="header">

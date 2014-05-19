@@ -4,13 +4,13 @@
 
 <hr class="hr1" />
 <div class="designer">
-    <img src="<%=_designer.ImageUrl %>" alt="error"/>
+    <img src="<%=_designer.imageUrl %>" alt="error"/>
 
     <div>
-    <h1><%=_designer.Name %></h1>
+    <h1><%=_designer.name %></h1>
     <div class="description">
     <span>
-    <%=_designer.Description %>
+    <%=_designer.description %>
     </span>
     </div>
     </div>
@@ -18,8 +18,8 @@
 <hr class="hr1" />
      <div class="holeder">
 		<ul class="imageHolder">
-            <% foreach(Collection collection in collections){ %>
-			<li><a href="collection-detail.aspx"><img src="<%=collection.ImageUrl %>" alt="" align="absmiddle"/><%=collection.Name %></a></li>
+            <% foreach(Table_Collection collection in collections){ %>
+			<li><a href="collection-detail.aspx"><img src="<%=collection.imageUrl %>" alt="" align="absmiddle"/><%=collection.name %></a></li>
             <%} %>
         </ul>
      </div>

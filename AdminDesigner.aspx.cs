@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class AdminDesigner : System.Web.UI.Page
 {
     private Dbc dbc = new Dbc();
-    protected static List<Designer> designers = new List<Designer>();
+    protected static List<Table_Designer> designers = new List<Table_Designer>();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -30,9 +30,9 @@ public partial class AdminDesigner : System.Web.UI.Page
     protected void button2_Click(object sender, EventArgs e)
     {
         DropDownList1.Items.Clear();
-        foreach (Designer designer in designers)
+        foreach (Table_Designer designer in designers)
         {
-            DropDownList1.Items.Add(designer.Name);
+            DropDownList1.Items.Add(designer.name);
         }
         Label14.Text = Label15.Text = String.Empty;
         textbox3.Text = String.Empty;
@@ -48,9 +48,9 @@ public partial class AdminDesigner : System.Web.UI.Page
     protected void button3_Click(object sender, EventArgs e)
     {
         DropDownList2.Items.Clear();
-        foreach (Designer designer in designers)
+        foreach (Table_Designer designer in designers)
         {
-            DropDownList2.Items.Add(designer.Name);
+            DropDownList2.Items.Add(designer.name);
         }
         panel1.Visible = false;
         panel2.Visible = false;
@@ -79,11 +79,11 @@ public partial class AdminDesigner : System.Web.UI.Page
         {
             if (dbc.GetDesignerByName(this.textbox1.Text) == null)
             {
-                Designer designer = new Designer();
-                designer.Name = textbox1.Text;
-                designer.Description = textbox2.Text;
-                designer.ImageUrl = @"images/designer/" + FileUpload1.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(designer.ImageUrl);
+                Table_Designer designer = new Table_Designer();
+                designer.name = textbox1.Text;
+                designer.description = textbox2.Text;
+                designer.imageUrl = @"images/designer/" + FileUpload1.PostedFile.FileName.ToString();
+                String mappath = Server.MapPath(designer.imageUrl);
                 FileUpload1.PostedFile.SaveAs(mappath);
                 dbc.AddDesigner(designer);
                 designers.Add(designer);
@@ -121,26 +121,26 @@ public partial class AdminDesigner : System.Web.UI.Page
         }
         try
         {
-            Designer designer = new Designer();
-            designer.Name = DropDownList1.SelectedItem.ToString();
-            designer.Description = textbox3.Text;
+            Table_Designer designer = new Table_Designer();
+            designer.name = DropDownList1.SelectedItem.ToString();
+            designer.description = textbox3.Text;
             if (checkbox1.Checked == true)
             {
-                designer.ImageUrl = dbc.GetDesignerByName(designer.Name).ImageUrl;
+                designer.imageUrl = dbc.GetDesignerByName(designer.name).imageUrl;
             }
             else
             {
-                designer.ImageUrl = @"images/designer/" + FileUpload2.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(designer.ImageUrl);
+                designer.imageUrl = @"images/designer/" + FileUpload2.PostedFile.FileName.ToString();
+                String mappath = Server.MapPath(designer.imageUrl);
                 FileUpload2.PostedFile.SaveAs(mappath);
             }
             dbc.UpdateDesigner(designer);
-            foreach (Designer d in designers)
+            foreach (Table_Designer d in designers)
             {
-                if (d.Name == designer.Name)
+                if (d.name == designer.name)
                 {
-                    d.ImageUrl = designer.ImageUrl;
-                    d.Description = designer.Description;
+                    d.imageUrl = designer.imageUrl;
+                    d.description = designer.description;
                     break;
                 }
 
@@ -163,7 +163,7 @@ public partial class AdminDesigner : System.Web.UI.Page
             dbc.DeleteDesigner(DropDownList2.SelectedItem.ToString());
             for (int i = 0; i < designers.Count; i++)
             {
-                if (designers[i].Name == DropDownList2.SelectedItem.ToString())
+                if (designers[i].name == DropDownList2.SelectedItem.ToString())
                 {
                     designers.RemoveAt(i);
                     break;
@@ -180,11 +180,11 @@ public partial class AdminDesigner : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        foreach (Designer designer in designers)
+        foreach (Table_Designer designer in designers)
         {
-            if (designer.Name == DropDownList1.SelectedItem.ToString())
+            if (designer.name == DropDownList1.SelectedItem.ToString())
             {
-                textbox3.Text = designer.Description;
+                textbox3.Text = designer.description;
                 break;
             }
         }

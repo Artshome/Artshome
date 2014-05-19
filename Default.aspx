@@ -3,14 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="chinaz">
     <ul class="51buypic">
-        <li><a href="Default.aspx" target="_blank"><img src="images/991453595.jpg" alt="picture"/></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/2.jpg" alt="picture"/></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/3.jpg" alt="picture" /></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/4.jpg" alt="picture"/></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/1.jpg" alt="picture"/></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/2.jpg" alt="picture"/></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/3.jpg" alt="picture"/></a></li>
-        <li><a href="Default.aspx" target="_blank"><img src="images/4.jpg" alt="picture"/></a></li>
+        <li><img src="images/banners/1.jpg" alt="picture"/></li>
+        <li><img src="images/banners/2.jpg" alt="picture"/></li>
+        <li><img src="images/banners/3.jpg" alt="picture" /></li>
+        <li><img src="images/banners/4.jpg" alt="picture"/></li>
+        <li><img src="images/banners/5.jpg" alt="picture"/></li>
+        <li><img src="images/banners/6.jpg" alt="picture"/></li>
+        <li><img src="images/banners/7.jpg" alt="picture"/></li>
+        <li><img src="images/banners/8.jpg" alt="picture"/></li>
     </ul>
     <a class="prev" href="javascript:void(0)"></a>
     <a class="next" href="javascript:void(0)"></a>
@@ -33,13 +33,7 @@
 
             var posters1 = new posters('posters1', { className: "posters" },
         [
-        { "img": "images\/LONDON.jpg", "url": "images\/LONDON.jpg" },
-        { "img": "images\/NY.jpg", "url": "images\/NY.jpg" },
-        { "img": "images\/ROYALGUARD.jpg", "url": "images\/ROYALGUARD.jpg" },
-        { "img": "images\/STOCKHOLM.jpg", "url": "images\/STOCKHOLM.jpg" },
-        { "img": "images\/PARIS.jpg", "url": "images\/PARIS.jpg" },
-        { "img": "images\/11.png", "url": "images\/11.png" },
-        { "img": "images\/12.png", "url": "images\/12.png" },
+        <%=images%>
         ]
         );
         });

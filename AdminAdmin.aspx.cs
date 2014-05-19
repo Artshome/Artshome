@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 public partial class AdminAdmin : System.Web.UI.Page
 {
     private Dbc dbc =new Dbc();
-    protected static List<Admin> admins = new List<Admin>();
+    protected static List<Table_Admin> admins = new List<Table_Admin>();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -30,9 +30,9 @@ public partial class AdminAdmin : System.Web.UI.Page
     protected void button2_Click(object sender, EventArgs e)
     {
         DropDownList1.Items.Clear();
-        foreach (Admin admin in admins)
+        foreach (Table_Admin admin in admins)
         {
-            DropDownList1.Items.Add(admin.Name);
+            DropDownList1.Items.Add(admin.name);
         }
         DropDownList1_SelectedIndexChanged(sender, e);
         Label14.Text = Label16.Text = Label18.Text = String.Empty;
@@ -45,9 +45,9 @@ public partial class AdminAdmin : System.Web.UI.Page
     protected void button3_Click(object sender, EventArgs e)
     {
         DropDownList2.Items.Clear();
-        foreach (Admin admin in admins)
+        foreach (Table_Admin admin in admins)
         {
-            DropDownList2.Items.Add(admin.Name);
+            DropDownList2.Items.Add(admin.name);
         }
         panel1.Visible = false;
         panel2.Visible = false;
@@ -57,9 +57,7 @@ public partial class AdminAdmin : System.Web.UI.Page
     }
     protected void button4_Click(object sender, EventArgs e)
     {
-
         Label6.Text = Label7.Text = Label8.Text = Label9.Text = String.Empty;
-
         if (textbox1.Text.Equals(String.Empty) ||
             textbox2.Text.Equals(String.Empty) ||
             textbox3.Text.Equals(String.Empty))
@@ -73,7 +71,6 @@ public partial class AdminAdmin : System.Web.UI.Page
             Label9.Text = "Input mark by * is required.";
             return;
         }
-
         if (!this.textbox2.Text.Equals(this.textbox3.Text))
         {
             this.Label9.Text = "Passwords must be matched.";
@@ -83,13 +80,13 @@ public partial class AdminAdmin : System.Web.UI.Page
         {
             if (dbc.GetAdminByName(this.textbox1.Text) == null)
             {
-                Admin admin = new Admin();
-                admin.Name = textbox1.Text;
-                admin.Password = textbox2.Text;
-                admin.ProductPermission = checkbox1.Checked == true ? 1 : 0;
-                admin.CollectionPermission = checkbox2.Checked == true ? 1 : 0;
-                admin.DesignerPermission = checkbox3.Checked == true ? 1 : 0;
-                admin.SuperPermission = checkbox4.Checked == true ? 1 : 0;
+                Table_Admin admin = new Table_Admin();
+                admin.name = textbox1.Text;
+                admin.password = textbox2.Text;
+                admin.productPermission = checkbox1.Checked == true ? 1 : 0;
+                admin.collectionPermission = checkbox2.Checked == true ? 1 : 0;
+                admin.designerPermission = checkbox3.Checked == true ? 1 : 0;
+                admin.superPermission = checkbox4.Checked == true ? 1 : 0;
                 dbc.AddAdmin(admin);
                 admins.Add(admin);
                 panel1.Visible = false;
@@ -130,23 +127,23 @@ public partial class AdminAdmin : System.Web.UI.Page
         try
         {
 
-            Admin admin = new Admin();
-            admin.Name = DropDownList1.SelectedItem.ToString();
-            admin.Password = textbox4.Text;
-            admin.ProductPermission = checkbox5.Checked == true ? 1 : 0;
-            admin.CollectionPermission = checkbox6.Checked == true ? 1 : 0;
-            admin.DesignerPermission = checkbox7.Checked == true ? 1 : 0;
-            admin.SuperPermission = checkbox8.Checked == true ? 1 : 0;
+            Table_Admin admin = new Table_Admin();
+            admin.name = DropDownList1.SelectedItem.ToString();
+            admin.password = textbox4.Text;
+            admin.productPermission = checkbox5.Checked == true ? 1 : 0;
+            admin.collectionPermission = checkbox6.Checked == true ? 1 : 0;
+            admin.designerPermission = checkbox7.Checked == true ? 1 : 0;
+            admin.superPermission = checkbox8.Checked == true ? 1 : 0;
             dbc.UpdateAdmin(admin);
             for (int i = 0; i < admins.Count; i++)
             {
-                if (admins[i].Name == admin.Name)
+                if (admins[i].name == admin.name)
                 {
-                    admins[i].Password = admin.Password;
-                    admins[i].DesignerPermission = admin.DesignerPermission;
-                    admins[i].SuperPermission = admin.SuperPermission;
-                    admins[i].CollectionPermission = admin.CollectionPermission;
-                    admins[i].ProductPermission = admin.ProductPermission;
+                    admins[i].password = admin.password;
+                    admins[i].designerPermission = admin.designerPermission;
+                    admins[i].superPermission = admin.superPermission;
+                    admins[i].collectionPermission = admin.collectionPermission;
+                    admins[i].productPermission = admin.productPermission;
                     break;
                 }
             }
@@ -167,7 +164,7 @@ public partial class AdminAdmin : System.Web.UI.Page
             dbc.DeleteAdmin(DropDownList2.SelectedItem.ToString());
             for (int i = 0; i < admins.Count; i++)
             {
-                if (admins[i].Name == DropDownList2.SelectedItem.ToString())
+                if (admins[i].name == DropDownList2.SelectedItem.ToString())
                 {
                     admins.RemoveAt(i);
                     break;
@@ -184,14 +181,14 @@ public partial class AdminAdmin : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        foreach (Admin admin in admins)
+        foreach (Table_Admin admin in admins)
         {
-            if (admin.Name == DropDownList1.SelectedItem.ToString())
+            if (admin.name == DropDownList1.SelectedItem.ToString())
             {
-                checkbox5.Checked = admin.ProductPermission == 1 ? true : false;
-                checkbox6.Checked = admin.CollectionPermission == 1 ? true : false;
-                checkbox7.Checked = admin.DesignerPermission == 1 ? true : false;
-                checkbox8.Checked = admin.SuperPermission == 1 ? true : false;
+                checkbox5.Checked = admin.productPermission == 1 ? true : false;
+                checkbox6.Checked = admin.collectionPermission == 1 ? true : false;
+                checkbox7.Checked = admin.designerPermission == 1 ? true : false;
+                checkbox8.Checked = admin.superPermission == 1 ? true : false;
                 break;
             }
         }

@@ -8,10 +8,10 @@ using System.Web.UI.WebControls;
 public partial class AdminCollection : System.Web.UI.Page
 {
     private Dbc dbc = new Dbc();
-    private Collection collection = new Collection();
-    protected static List<Collection> collections = new List<Collection>();
-    protected static List<Designer> designers = new List<Designer>();
-    private Designer designer =new Designer();
+    private Table_Collection collection = new Table_Collection();
+    protected static List<Table_Collection> collections = new List<Table_Collection>();
+    protected static List<Table_Designer> designers = new List<Table_Designer>();
+    private Table_Designer designer =new Table_Designer();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -24,8 +24,8 @@ public partial class AdminCollection : System.Web.UI.Page
     protected void button1_Click(object sender, EventArgs e)
     {
         DropDownList3.Items.Clear();
-        foreach (Designer designer in designers)
-            DropDownList1.Items.Add(designer.Name);
+        foreach (Table_Designer designer in designers)
+            DropDownList1.Items.Add(designer.name);
         Label6.Text = Label7.Text = Label8.Text = String.Empty;
         textbox1.Text = textbox2.Text = String.Empty;
         panel1.Visible = true;
@@ -37,11 +37,11 @@ public partial class AdminCollection : System.Web.UI.Page
     protected void button2_Click(object sender, EventArgs e)
     {
         DropDownList2.Items.Clear();
-        foreach (Collection collection in collections)
-            DropDownList2.Items.Add(collection.Name);
+        foreach (Table_Collection collection in collections)
+            DropDownList2.Items.Add(collection.name);
         DropDownList3.Items.Clear();
-        foreach (Designer designer in designers)
-            DropDownList3.Items.Add(designer.Name);
+        foreach (Table_Designer designer in designers)
+            DropDownList3.Items.Add(designer.name);
         Label14.Text = Label15.Text = String.Empty;
         textbox3.Text = String.Empty;
         DropDownList2_SelectedIndexChanged(sender, e);
@@ -56,8 +56,8 @@ public partial class AdminCollection : System.Web.UI.Page
     protected void button3_Click(object sender, EventArgs e)
     {
         DropDownList4.Items.Clear();
-        foreach (Collection collection in collections)
-            DropDownList4.Items.Add(collection.Name);
+        foreach (Table_Collection collection in collections)
+            DropDownList4.Items.Add(collection.name);
         panel1.Visible = false;
         panel2.Visible = false;
         panel3.Visible = true;
@@ -85,12 +85,12 @@ public partial class AdminCollection : System.Web.UI.Page
         {
             if (dbc.GetCollectionByName(this.textbox1.Text) == null)
             {
-                Collection collection = new Collection();
-                collection.Name = textbox1.Text;
-                collection.Description = textbox2.Text;
-                collection.DesignerName = DropDownList1.SelectedItem.ToString();
-                collection.ImageUrl = @"images/collection/" + FileUpload1.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(collection.ImageUrl);
+                Table_Collection collection = new Table_Collection();
+                collection.name = textbox1.Text;
+                collection.description = textbox2.Text;
+                collection.designer = DropDownList1.SelectedItem.ToString();
+                collection.imageUrl = @"images/collection/" + FileUpload1.PostedFile.FileName.ToString();
+                String mappath = Server.MapPath(collection.imageUrl);
                 FileUpload1.PostedFile.SaveAs(mappath);
                 dbc.AddCollection(collection);
                 collections.Add(collection);
@@ -128,28 +128,28 @@ public partial class AdminCollection : System.Web.UI.Page
         }
         try
         {
-            Collection collection = new Collection();
-            collection.Name = DropDownList2.SelectedItem.ToString();
-            collection.DesignerName = DropDownList3.SelectedItem.ToString();
-            collection.Description = textbox3.Text;
+            Table_Collection collection = new Table_Collection();
+            collection.name = DropDownList2.SelectedItem.ToString();
+            collection.designer = DropDownList3.SelectedItem.ToString();
+            collection.description = textbox3.Text;
             if (checkbox1.Checked == true)
             {
-                collection.ImageUrl = dbc.GetCollectionByName(collection.Name).ImageUrl;
+                collection.imageUrl = dbc.GetCollectionByName(collection.name).imageUrl;
             }
             else
             {
-                collection.ImageUrl = @"images/collection/" + FileUpload2.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(collection.ImageUrl);
+                collection.imageUrl = @"images/collection/" + FileUpload2.PostedFile.FileName.ToString();
+                String mappath = Server.MapPath(collection.imageUrl);
                 FileUpload2.PostedFile.SaveAs(mappath);
             }
             dbc.UpdateCollection(collection);
-            foreach (Collection c in collections)
+            foreach (Table_Collection c in collections)
             {
-                if (c.Name == collection.Name)
+                if (c.name == collection.name)
                 {
-                    c.Description = collection.Description;
-                    c.DesignerName = collection.DesignerName;
-                    c.ImageUrl = collection.ImageUrl;
+                    c.description = collection.description;
+                    c.designer = collection.designer;
+                    c.imageUrl = collection.imageUrl;
                     break;
                 }
             }
@@ -171,7 +171,7 @@ public partial class AdminCollection : System.Web.UI.Page
             dbc.DeleteCollection(DropDownList4.SelectedItem.ToString());
             for (int i = 0; i < collections.Count; i++)
             {
-                if (collections[i].Name == DropDownList4.SelectedItem.ToString())
+                if (collections[i].name == DropDownList4.SelectedItem.ToString())
                 {
                     collections.RemoveAt(i);
                     break;
@@ -188,11 +188,11 @@ public partial class AdminCollection : System.Web.UI.Page
     }
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        foreach (Collection collection in collections)
+        foreach (Table_Collection collection in collections)
         {
-            if (collection.Name == DropDownList2.SelectedItem.ToString())
+            if (collection.name == DropDownList2.SelectedItem.ToString())
             {
-                textbox3.Text = collection.Description;
+                textbox3.Text = collection.description;
                 break;
             }
         }
