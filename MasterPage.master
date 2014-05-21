@@ -77,7 +77,7 @@
                 <li><a href="#">ECPLAZA</a></li>
             </ul></li>
             <li><a href="tradeshow.aspx">TRADE SHOWS</a></li>
-            <li><a href="#">NEWS</a></li>
+            <li><a href="news.aspx">NEWS</a></li>
             <li><a href="#">INFORMATION</a>
             <ul>
                 <li><a href="about.aspx">ABOUT US</a></li>

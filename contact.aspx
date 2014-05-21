@@ -6,19 +6,19 @@
     <div class="paragraph">
         <br /><br />
         <img class="infoIcon" src="images/3247.png" alt="address" />
-        <span class="info">Industrial Park, SanjiaoTang, Baishi Village, HuiYang District(516200), HuiZhou City, Guangdong, China.</span>
+        <span><%=info.ContactAddress %></span>
         <br />
         <img class="infoIcon" src="images/3289.png" alt="Attn" />
-        <span class="info">Jacklin(sales director)</span>
+        <span><%=info.ContactRole %></span>
         <br />
         <img class="infoIcon" src="images/4932.png" alt="Tel" />
-        <span class="info">+86-0752-3746869</span>
+        <span><%=info.ContactPhone %></span>
         <br />
         <img class="infoIcon" src="images/phone.jpg" alt="Mobile" />
-        <span class="info">+86-13538090520</span>
+        <span><%=info.ContactMobie %></span>
         <br />
         <img class="infoIcon" src="images/skype.png" alt="skype" />
-        <span class="info">newtophomeware</span>
+        <span><%=info.ContactSkype %></span>
         </div>
 </asp:Content>
 

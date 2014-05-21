@@ -41,6 +41,12 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
   partial void InsertTable_Product(Table_Product instance);
   partial void UpdateTable_Product(Table_Product instance);
   partial void DeleteTable_Product(Table_Product instance);
+  partial void InsertTable_News(Table_News instance);
+  partial void UpdateTable_News(Table_News instance);
+  partial void DeleteTable_News(Table_News instance);
+  partial void InsertTable_Info(Table_Info instance);
+  partial void UpdateTable_Info(Table_Info instance);
+  partial void DeleteTable_Info(Table_Info instance);
   #endregion
 	
 	public DataClassesDataContext() : 
@@ -102,6 +108,22 @@ public partial class DataClassesDataContext : System.Data.Linq.DataContext
 		get
 		{
 			return this.GetTable<Table_Product>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Table_News> Table_News
+	{
+		get
+		{
+			return this.GetTable<Table_News>();
+		}
+	}
+	
+	public System.Data.Linq.Table<Table_Info> Table_Info
+	{
+		get
+		{
+			return this.GetTable<Table_Info>();
 		}
 	}
 }
@@ -665,6 +687,346 @@ public partial class Table_Product : INotifyPropertyChanging, INotifyPropertyCha
 				this._collection = value;
 				this.SendPropertyChanged("collection");
 				this.OncollectionChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Table_News")]
+public partial class Table_News : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private int _Id;
+	
+	private string _Title;
+	
+	private string _Body;
+	
+	private System.DateTime _Date;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTitleChanging(string value);
+    partial void OnTitleChanged();
+    partial void OnBodyChanging(string value);
+    partial void OnBodyChanged();
+    partial void OnDateChanging(System.DateTime value);
+    partial void OnDateChanged();
+    #endregion
+	
+	public Table_News()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+	public int Id
+	{
+		get
+		{
+			return this._Id;
+		}
+		set
+		{
+			if ((this._Id != value))
+			{
+				this.OnIdChanging(value);
+				this.SendPropertyChanging();
+				this._Id = value;
+				this.SendPropertyChanged("Id");
+				this.OnIdChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Title", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+	public string Title
+	{
+		get
+		{
+			return this._Title;
+		}
+		set
+		{
+			if ((this._Title != value))
+			{
+				this.OnTitleChanging(value);
+				this.SendPropertyChanging();
+				this._Title = value;
+				this.SendPropertyChanged("Title");
+				this.OnTitleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Body", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Body
+	{
+		get
+		{
+			return this._Body;
+		}
+		set
+		{
+			if ((this._Body != value))
+			{
+				this.OnBodyChanging(value);
+				this.SendPropertyChanging();
+				this._Body = value;
+				this.SendPropertyChanged("Body");
+				this.OnBodyChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Date", DbType="DateTime NOT NULL")]
+	public System.DateTime Date
+	{
+		get
+		{
+			return this._Date;
+		}
+		set
+		{
+			if ((this._Date != value))
+			{
+				this.OnDateChanging(value);
+				this.SendPropertyChanging();
+				this._Date = value;
+				this.SendPropertyChanged("Date");
+				this.OnDateChanged();
+			}
+		}
+	}
+	
+	public event PropertyChangingEventHandler PropertyChanging;
+	
+	public event PropertyChangedEventHandler PropertyChanged;
+	
+	protected virtual void SendPropertyChanging()
+	{
+		if ((this.PropertyChanging != null))
+		{
+			this.PropertyChanging(this, emptyChangingEventArgs);
+		}
+	}
+	
+	protected virtual void SendPropertyChanged(String propertyName)
+	{
+		if ((this.PropertyChanged != null))
+		{
+			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Table_Info")]
+public partial class Table_Info : INotifyPropertyChanging, INotifyPropertyChanged
+{
+	
+	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+	
+	private string _CompanyName;
+	
+	private string _Description;
+	
+	private string _ContactAddress;
+	
+	private string _ContactRole;
+	
+	private string _ContactPhone;
+	
+	private string _ContactMobie;
+	
+	private string _ContactSkype;
+	
+    #region 可扩展性方法定义
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCompanyNameChanging(string value);
+    partial void OnCompanyNameChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnContactAddressChanging(string value);
+    partial void OnContactAddressChanged();
+    partial void OnContactRoleChanging(string value);
+    partial void OnContactRoleChanged();
+    partial void OnContactPhoneChanging(string value);
+    partial void OnContactPhoneChanged();
+    partial void OnContactMobieChanging(string value);
+    partial void OnContactMobieChanged();
+    partial void OnContactSkypeChanging(string value);
+    partial void OnContactSkypeChanged();
+    #endregion
+	
+	public Table_Info()
+	{
+		OnCreated();
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyName", DbType="VarChar(200) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+	public string CompanyName
+	{
+		get
+		{
+			return this._CompanyName;
+		}
+		set
+		{
+			if ((this._CompanyName != value))
+			{
+				this.OnCompanyNameChanging(value);
+				this.SendPropertyChanging();
+				this._CompanyName = value;
+				this.SendPropertyChanged("CompanyName");
+				this.OnCompanyNameChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+	public string Description
+	{
+		get
+		{
+			return this._Description;
+		}
+		set
+		{
+			if ((this._Description != value))
+			{
+				this.OnDescriptionChanging(value);
+				this.SendPropertyChanging();
+				this._Description = value;
+				this.SendPropertyChanged("Description");
+				this.OnDescriptionChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactAddress", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+	public string ContactAddress
+	{
+		get
+		{
+			return this._ContactAddress;
+		}
+		set
+		{
+			if ((this._ContactAddress != value))
+			{
+				this.OnContactAddressChanging(value);
+				this.SendPropertyChanging();
+				this._ContactAddress = value;
+				this.SendPropertyChanged("ContactAddress");
+				this.OnContactAddressChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactRole", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+	public string ContactRole
+	{
+		get
+		{
+			return this._ContactRole;
+		}
+		set
+		{
+			if ((this._ContactRole != value))
+			{
+				this.OnContactRoleChanging(value);
+				this.SendPropertyChanging();
+				this._ContactRole = value;
+				this.SendPropertyChanged("ContactRole");
+				this.OnContactRoleChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactPhone", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+	public string ContactPhone
+	{
+		get
+		{
+			return this._ContactPhone;
+		}
+		set
+		{
+			if ((this._ContactPhone != value))
+			{
+				this.OnContactPhoneChanging(value);
+				this.SendPropertyChanging();
+				this._ContactPhone = value;
+				this.SendPropertyChanged("ContactPhone");
+				this.OnContactPhoneChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactMobie", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+	public string ContactMobie
+	{
+		get
+		{
+			return this._ContactMobie;
+		}
+		set
+		{
+			if ((this._ContactMobie != value))
+			{
+				this.OnContactMobieChanging(value);
+				this.SendPropertyChanging();
+				this._ContactMobie = value;
+				this.SendPropertyChanged("ContactMobie");
+				this.OnContactMobieChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ContactSkype", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+	public string ContactSkype
+	{
+		get
+		{
+			return this._ContactSkype;
+		}
+		set
+		{
+			if ((this._ContactSkype != value))
+			{
+				this.OnContactSkypeChanging(value);
+				this.SendPropertyChanging();
+				this._ContactSkype = value;
+				this.SendPropertyChanged("ContactSkype");
+				this.OnContactSkypeChanged();
 			}
 		}
 	}

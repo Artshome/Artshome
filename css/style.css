@@ -42,6 +42,7 @@ image
 {
     width:900px;
     margin:0 auto;
+
     background-color:White;
     position:relative;
     top:0px;
@@ -59,7 +60,7 @@ image
     overflow:hidden;
     width:900px;
     margin:0 auto;
-
+    margin-top:100px;
     text-align:center;
 }
 .headControls
@@ -267,6 +268,25 @@ table.collectionTable tr td p img{
     padding-left:25px;
     /*line-height:25px;*/
 }
+
+.newsBox
+{
+    width:800px;
+    margin:0 auto;
+    margin-top:20px;
+}
+
+    .newsBox .newsDate
+    {
+        font-size:x-small;
+        margin-left:50px;
+    }
+    .newsBox .newsTitle
+    {
+        font-size:x-large;
+        color:#3ea18d;
+    }
+
 
 .infoIcon
 {

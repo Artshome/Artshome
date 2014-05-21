@@ -204,4 +204,50 @@ public class Dbc
                 select s;
         return q.ToList();
     }
+    //添加新的新闻
+    public void AddNews(Table_News news)
+    {
+        data.Table_News.InsertOnSubmit(news);
+        data.SubmitChanges();
+    }
+    //根据ID获取新闻
+    public Table_News GetNewsById(int id)
+    {
+        var q = from s in data.Table_News
+                where s.Id == id
+                select s;
+        return q.Count() == 0 ? null : q.First();
+    }
+    //获取所有新闻
+    public List<Table_News> GetAllNews()
+    {
+        var q = from s in data.Table_News
+                select s;
+        return q.ToList();
+    }
+    //更新新闻
+    public void UpdateNews(Table_News news)
+    {
+        var q = from s in data.Table_News
+                where s.Id == news.Id
+                select s;
+        foreach (Table_News c in q)
+        {
+            c.Title = news.Title;
+            c.Body = news.Body;
+            c.Date = news.Date;
+            
+        }
+        data.SubmitChanges();
+    }
+    //删除新闻
+    public void DeleteNews(int id)
+    {
+        var q = from s in data.Table_News
+                where s.Id == id
+                select s;
+        data.Table_News.DeleteAllOnSubmit(q);
+        data.SubmitChanges();
+    }
+
 }

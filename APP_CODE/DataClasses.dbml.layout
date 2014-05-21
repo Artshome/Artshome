@@ -26,5 +26,17 @@
         <elementListCompartment Id="5d1131d6-76ad-4cba-8ef2-e34f170ff159" absoluteBounds="3.8899999999999997, 1.21, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="053ae218-c1bb-4180-8b9b-c9dce796f02e" absoluteBounds="6.375, 0.875, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/DataClassesDataContext/Table_News" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cbd4d57-a7d3-418c-a750-08433b8d244f" absoluteBounds="6.39, 1.335, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bb5874c5-0926-4ef8-af9a-e2ab65ce53ff" absoluteBounds="6.375, 2.875, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/DataClassesDataContext/Table_Info" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5b52e862-d020-41d9-80dc-72bd26eb8010" absoluteBounds="6.39, 3.335, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
