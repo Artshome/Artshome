@@ -23,7 +23,7 @@ public partial class AdminProduct : System.Web.UI.Page
     }
     protected void button1_Click(object sender, EventArgs e)
     {
-        DropDownList3.Items.Clear();
+        DropDownList1.Items.Clear();
         foreach (Table_Collection collection in collections)
             DropDownList1.Items.Add(collection.name);
         Label6.Text = Label7.Text = Label8.Text = Label26.Text = String.Empty;
