@@ -106,6 +106,15 @@ public class Dbc
         return q.ToList();
     }
 
+    //根据编码读取product
+    public Table_Product GetProductByCode(String code)
+    {
+        var q = from s in data.Table_Product
+                where s.code == code
+                select s;
+        return q.Count() == 0 ? null : q.First();
+    }
+
     //根据collection名读取product
     public List<Table_Product> GetProductByCollectionName(String collectionName)
     {

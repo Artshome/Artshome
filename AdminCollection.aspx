@@ -96,8 +96,8 @@
 
 <asp:Panel ID="panel3" Visible="false" runat="server">
 <div style="margin-left:20px;">
-    <asp:Label runat="server" ID="Label12" Text="Select an Designer to Delete" style="font-size:large" /><br /><br />
-    <asp:Label runat="server" ID="Label19" Text="Admin Name" /><br />
+    <asp:Label runat="server" ID="Label12" Text="Select an Collection to Delete" style="font-size:large" /><br /><br />
+    <asp:Label runat="server" ID="Label19" Text="Collection Name" /><br />
     <asp:DropDownList runat="server" ID="DropDownList4" 
         style="width:150px;margin-left:0px;" >
     </asp:DropDownList>

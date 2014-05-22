@@ -15,9 +15,10 @@
     <div>
 	  <table class="imgset1 collectionTable clearfix">
         <tr>
-        <th>VISUAL</th>
-        <th>SIZE</th>
-        <th>CODE</th>
+            <th>VISUAL</th>
+            <th>SHARP</th>
+            <th>SIZE</th>
+            <th>CODE</th>
         </tr>
         <%
             foreach(Table_Product product in productslist)
@@ -25,6 +26,7 @@
                 %>
                 <tr>
                     <td class="td1"><p><a href="<%=product.imageUrl %>" rel="lightbox"><img src="<%=product.imageUrl %>" alt="" /></a></p></td>            
+                    <th class="td2"><%=product.shape %></th>
                     <td class="td2"><%=product.size %></td>
                     <td class="td1"><%=product.code %></td>
                 </tr>
