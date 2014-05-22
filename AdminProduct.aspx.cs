@@ -198,11 +198,12 @@ public partial class AdminProduct : System.Web.UI.Page
     }
     protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
     {
-        foreach (Table_Collection collection in collections)
+        foreach (Table_Product product in products)
         {
-            if (collection.name == DropDownList2.SelectedItem.ToString())
+            if (product.code == DropDownList2.SelectedItem.ToString())
             {
-                textbox3.Text = collection.description;
+                textbox4.Text = product.shape;
+				textbox5.Text = product.size;
                 break;
             }
         }
