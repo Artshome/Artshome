@@ -22,22 +22,25 @@
     
     <div class="mainBody">
     <form id="form1" runat="server">
-    <%
-        Dbc dbc = new Dbc();
-        List<Table_Designer> designers = dbc.GetALLDesigner();
-        List<Table_Collection> collections = dbc.GetALLCollection();    
-    %>
     <div class="head">
         <img class="logo" src="images/logo.png" alt="Artshome" />
+        
         <div class="headControls">
+            <span class="headtitle"><%=companyName %></span>
             <a href="http://facebook.com" target="_blank"><img class="icon" src="images/facebook.png" alt="facebook" /></a>
             <br /><br />
             <select class="languageBox">
                 <option>English</option>
-                <option>OtherLanuage1</option>
-                <option>OtherLanuage2</option>
             </select>
-            <input type="text" class="searchBox" />
+            <input type="text" id="text1" class="searchBox" />
+            <input type="button" id="button1" class="searchButton" value="Go"/>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#button1").click(function () {
+                        window.open('https://www.google.com.hk/search?q=' + $("#text1").val(), '_blank');
+                    });
+                });
+            </script>
         </div>
         
     </div>

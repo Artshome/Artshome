@@ -19,7 +19,7 @@
      <div class="holeder">
 		<ul class="imageHolder">
             <% foreach(Table_Collection collection in collections){ %>
-			<li><a href="collection-detail.aspx"><img src="<%=collection.imageUrl %>" alt="" align="absmiddle"/><%=collection.name %></a></li>
+			<li><a href="collection-detail.aspx?collectionName=<%=collection.name %>"><img src="<%=collection.imageUrl %>" alt="" align="absmiddle"/><%=collection.name %></a></li>
             <%} %>
         </ul>
      </div>

@@ -63,13 +63,14 @@ image
     margin-top:100px;
     text-align:center;
 }
+
 .headControls
 {
     margin-top:50px;
     margin-right:20px;
-    height:100px; 
+    height:140px; 
     overflow:hidden;
-    width:600px;
+    width:670px;
     float:right;
     text-align:right;
 }
@@ -87,6 +88,15 @@ image
     overflow:hidden;
     cursor:pointer;
 }
+.headtitle
+{
+    font-size:x-large;
+    color:#3ea18d;
+    float:left;
+
+    font-weight:bold;
+}
+
 .searchBox
 {
     margin-bottom:10px;
@@ -98,6 +108,17 @@ image
     line-height:20px;
     border-style:groove;
     border-radius:6px;
+}
+.searchButton
+{
+    position:relative;
+    height:25px;
+    width:40px;
+    border-radius:4px;
+    background-color:#B53798;
+    color:white;
+    border:none;
+    cursor:pointer;
 }
 .languageBox
 {
