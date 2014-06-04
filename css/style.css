@@ -342,3 +342,19 @@ table.collectionTable tr td p img{
 
 .posters .contentHolderUnit{cursor:pointer;position:absolute;}
 .posters .contentHolderUnit img{border-radius:6px; width:100%;height:100%;border:0;}
+
+li{ list-style:none}
+#rightButton{ position:fixed; _position:absolute; top:208px; right:0; z-index:999999; display:block;}
+#right_ul{ position:relative;}
+#right_qq{  background:url(../images/7_03.png) no-repeat; width:68px; height:74px; }
+#right_tel{ background:url(../images/7_05.png) no-repeat; width:68px; height:77px; }
+#right_tip{  background:url(../images/flag_right.png) no-repeat; width:252px; height:91px; position:absolute; right:70px; top:-10px; display:none; z-index:999999; }
+.flagShow_p1{ float:left; margin-left:15px; _margin-left:5px; font-size:18px; line-height:51px;}
+.flagShow_p2{ float:left; margin-left:10px; _margin-left:5px; font-size:16px;  color:#FA7C00; line-height:51px;}
+.flagShow_p2 a{ display:block; margin: 20px 0 5px 12px; line-height:0;}
+.flagShow_p2 span{ margin: 0 0 0 14px; }
+.flag_qq{ display:none;}
+#backToTop{ position:fixed; _position:absolute; bottom:50px; right:0; z-index:999999; display:none; }
+a.backToTop_a{  background:url(../images/7_08.png) no-repeat; width:68px; height:79px; display:block; }
+a.backToTop_a:active{  background:url(../images/7_11.png) no-repeat; }
+.line91{ line-height:91px; }

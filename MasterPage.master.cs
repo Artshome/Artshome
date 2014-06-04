@@ -12,6 +12,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected static List<Table_Designer> designers = new List<Table_Designer>();
     protected static List<Table_Collection> collections = new List<Table_Collection>();
     protected static String companyName = String.Empty;
+    protected static Table_Info info = new Table_Info();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -21,6 +22,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
             var q = from s in data.Table_Info
                     select s.CompanyName;
             companyName = q.First();
+            var p = from s in data.Table_Info
+                    select s;
+            info = p.First();
         }
     }
 
