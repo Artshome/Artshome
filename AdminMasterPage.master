@@ -35,8 +35,10 @@
     		
             <div class="sidebarmenu">
                 <a class="menuitem" href="AdminDefault.aspx">Home</a>
-                <a class="menuitem" href="AdminNews.aspx">News</a>
                 <a class="menuitem" href="AdminInfo.aspx">Infomation</a>
+                <a class="menuitem" href="AdminNews.aspx">News</a>
+                <a class="menuitem" href="AdminTradeShow.aspx">Trade Show</a> 
+                
             <%if (Session["productPermission"].ToString() == "true")
               { %>
                 <a class="menuitem" href="AdminProduct.aspx">Product</a>

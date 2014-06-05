@@ -8,7 +8,51 @@ using System.Data.SqlClient;
 public class Dbc
 {
     private DataClassesDataContext data = new DataClassesDataContext();
-
+    //添加新的展会
+    public void AddTradeShow(Table_TradeShow tradeshow)
+    {
+        data.Table_TradeShow.InsertOnSubmit(tradeshow);
+        data.SubmitChanges();
+    }
+    //根据ID获取展会
+    public Table_TradeShow GetTradeShowByName(string name)
+    {
+        var q = from s in data.Table_TradeShow
+                where s.name == name
+                select s;
+        return q.Count() == 0 ? null : q.First();
+    }
+    //获取所有展会
+    public List<Table_TradeShow> GetALLTradeShow()
+    {
+        var q = from s in data.Table_TradeShow
+                select s;
+        return q.ToList();
+    }
+    //更新展会
+    public void UpdateTradeShow(Table_TradeShow tradeshow)
+    {
+        var q = from s in data.Table_TradeShow
+                where s.name == tradeshow.name
+                select s;
+        foreach (Table_TradeShow c in q)
+        {
+            c.date = tradeshow.date;
+            c.location = tradeshow.location;
+            c.image = tradeshow.image;
+            c.link = tradeshow.link;
+        }
+        data.SubmitChanges();
+    }
+    //删除展会
+    public void DeleteTradeShow(string name)
+    {
+        var q = from s in data.Table_TradeShow
+                where s.name == name
+                select s;
+        data.Table_TradeShow.DeleteAllOnSubmit(q);
+        data.SubmitChanges();
+    }
     //添加新的collection
     public void AddCollection(Table_Collection collection)
     {
