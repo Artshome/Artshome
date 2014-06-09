@@ -226,7 +226,22 @@ ul.imageHolder li p
     margin-bottom:40px;
     margin-right:60px;
 }
+.tsTable
+{
+    width:210px;
+    height:400px;
+    margin:5px;
+    float:left;
+    text-align:center;
+}
 
+.tsImg
+{
+    width:150px;
+    height:200px;
+    margin-bottom:15px;
+    margin-top:15px;
+}
 
 /*-----收藏品信息表----*/
 table.collectionTable{
