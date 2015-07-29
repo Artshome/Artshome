@@ -79,6 +79,7 @@ public partial class AdminNews : System.Web.UI.Page
             panel1.Visible = false;
             Label20.Text = "Successfully Added.";
             panel4.Visible = true;
+            GridView1.DataBind();
             return;
         }
         catch (Exception e1)
@@ -122,6 +123,7 @@ public partial class AdminNews : System.Web.UI.Page
             panel2.Visible = false;
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
+            GridView1.DataBind();
             return;
         }
         catch (Exception e1)
@@ -145,6 +147,7 @@ public partial class AdminNews : System.Web.UI.Page
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
             panel4.Visible = true;
+            GridView1.DataBind();
         }
         catch (Exception e1)
         {
@@ -160,6 +163,17 @@ public partial class AdminNews : System.Web.UI.Page
                 textbox3.Text = _news.Title;
                 textarea2.Value = _news.Body;
                 break;
+            }
+        }
+    }
+    protected void GridView1_DataBound(object sender, EventArgs e)
+    {
+        for (int i = 0; i < GridView1.Rows.Count; i++)
+        {
+            if (GridView1.Rows[i].Cells[2].Text.Length > 100)
+            {
+                GridView1.Rows[i].Cells[2].Text = GridView1.Rows[i].Cells[2].Text.Substring(0, 99);
+                GridView1.Rows[i].Cells[2].Text += "...";
             }
         }
     }

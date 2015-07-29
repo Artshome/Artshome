@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMasterPage.master" AutoEventWireup="true" CodeFile="AdminCollection.aspx.cs" Inherits="AdminCollection" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<% 
+    <% 
     if (Session["collectionPermission"] == null || Session["collectionPermission"].ToString() == "false")
    {
        Response.Redirect("AdminDefault.aspx");
@@ -9,28 +9,26 @@
 %>
 
 <h2>Collection Settings</h2> 
-<table id="rounded-corner">
-    <thead>
-    	<tr>
-            <th scope="col" class="rounded">Collection Name</th>
-            <th scope="col" class="rounded">Description</th>
-            <th scope="col" class="rounded">DesignerName</th>
-            <th scope="col" class="rounded">ImageUrl</th>
-        </tr>
-    </thead>
-    <% foreach (Table_Collection collection in collections)
-       {
-           %>
-    <tbody>
-    	<tr>
-            <td><%=collection.name%></td>
-            <td><%=collection.description.Length > 100 ? collection.description.Substring(0, 100) + "..." : collection.description%></td>
-            <td><%=collection.designer %></td>
-            <td><%=collection.imageUrl%></td>
-        </tr>
-    </tbody>
-    <%}%>
-</table>
+<asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="10" DataKeyNames="id" DataSourceID="LinqDataSource1" OnDataBound="GridView1_DataBound" Width="600px">
+    <Columns>
+        <asp:BoundField DataField="id" HeaderText="id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+        <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+        <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
+        <asp:BoundField DataField="imageUrl" HeaderText="imageUrl" SortExpression="imageUrl" />
+        <asp:BoundField DataField="designer" HeaderText="designer" SortExpression="designer" />
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+    </asp:GridView>
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="Table_Collection">
+    </asp:LinqDataSource>
 <div style=" text-align:right">
 <asp:Button ID="button1" runat="server" class="AddNewItemButton" 
         Text="Add" onclick="button1_Click" />
@@ -70,12 +68,15 @@
 <asp:Panel ID="panel2" Visible="false" runat="server">
 <div style="margin-left:20px;">
     <asp:Label runat="server" ID="Label10" Text="Select a Collection to Update" style="font-size:large" /><br /><br />
-    <asp:Label runat="server" ID="Label11" Text="Collection Name" /><br />
+    <asp:Label runat="server" ID="Label11" Text="Collection Id" /><br />
     <asp:DropDownList runat="server" ID="DropDownList2" 
         style="width:150px;margin-left:0px;" AutoPostBack="True" 
         onselectedindexchanged="DropDownList2_SelectedIndexChanged" >
     </asp:DropDownList>
     <br /><br />
+    <asp:Label runat="server" ID="Label18" Text="Collection Name" /><br />
+    <asp:TextBox runat="server" ID="textbox4" style="width:300px;margin-left:0px;" /><br /><br />
+    
     <asp:Label runat="server" ID="Label17" Text="Designer Name" /><br />
     <asp:DropDownList runat="server" ID="DropDownList3" 
         style="width:150px;margin-left:0px;" AutoPostBack="True" >

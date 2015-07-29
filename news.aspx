@@ -6,7 +6,7 @@
     <%foreach(Table_News _news in newslist){ %>
     <div class="newsBox">
         <a href="<%="readNews.aspx?newsid="+_news.Id.ToString() %>" class="newsTitle"><%=_news.Title %></a>
-        <span class="newsDate"><%=_news.Date.ToShortDateString() %></span><br />
+        <span class="newsDate"><%=_news.Date.ToString("MM/dd/yyyy") %></span><br />
         <span><%=_news.Body.Length>200?_news.Body.Substring(0, 200)+"...":_news.Body %></span><br />
         <hr style="width:100%;border-style:dashed;border-width:1px"/>
     </div>

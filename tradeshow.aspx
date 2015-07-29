@@ -11,7 +11,7 @@
         <div class="tsTable">
         <ul>
         <li><strong><%=tradeshow.name %></strong></li>
-        <li><strong><%=tradeshow.date %></strong></li>
+        <li><strong><%=tradeshow.date.ToString("MM/dd/yyyy")+"~"+tradeshow.date_end.ToString("MM/dd/yyyy") %></strong></li>
         <li><strong><%=tradeshow.location %></strong></li>
         <li><img class="tsImg" src="<%=tradeshow.image %>" alt=" " /></li>
         <li>More details about</li>

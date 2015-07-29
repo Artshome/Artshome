@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminMasterPage.master" AutoEventWireup="true" CodeFile="AdminAdmin.aspx.cs" Inherits="AdminAdmin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<% 
+    <% 
     if (Session["superPermission"] == null || Session["superPermission"].ToString() == "false")
    {
        Response.Redirect("AdminDefault.aspx");
@@ -11,31 +11,27 @@
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
 <ContentTemplate>
 <h2>Admin Settings</h2>            
-<table id="rounded-corner">
-    <thead>
-    	<tr>
-            <th scope="col" class="rounded">Admin Name</th>
-            <th scope="col" class="rounded">Password</th>
-            <th scope="col" class="rounded">Product Permission</th>
-            <th scope="col" class="rounded">Collection Permission</th>
-            <th scope="col" class="rounded">Designer Permission</th>
-            <th scope="col" class="rounded">Super Permission</th>
-        </tr>
-    </thead>
-    <% foreach(Table_Admin admin in admins){
-           %>
-    <tbody>
-    	<tr>
-            <td><%=admin.name %></td>
-            <td><%=admin.password %></td>
-            <td><%=admin.productPermission == 1 ? "Yes" : "No" %></td>
-            <td><%=admin.collectionPermission == 1 ? "Yes" : "No" %></td>
-            <td><%=admin.designerPermission == 1 ? "Yes" : "No" %></td>
-            <td><%=admin.superPermission == 1 ? "Yes" : "No" %></td>
-        </tr>
-    </tbody>
-    <%}%>
-</table>
+<asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="10" DataKeyNames="name" DataSourceID="LinqDataSource1" style="margin-right: 0px" Width="600px">
+    <Columns>
+        <asp:BoundField DataField="name" HeaderText="name" ReadOnly="True" SortExpression="name" />
+        <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
+        <asp:BoundField DataField="productPermission" HeaderText="product Permission" SortExpression="productPermission" />
+        <asp:BoundField DataField="collectionPermission" HeaderText="collection Permission" SortExpression="collectionPermission" />
+        <asp:BoundField DataField="designerPermission" HeaderText="designer Permission" SortExpression="designerPermission" />
+        <asp:BoundField DataField="superPermission" HeaderText="super Permission" SortExpression="superPermission" />
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+    </asp:GridView>
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="DataClassesDataContext" EntityTypeName="" TableName="Table_Admin">
+    </asp:LinqDataSource>
 <div style=" text-align:right">
 <asp:Button ID="button1" runat="server" class="AddNewItemButton" 
         Text="Add" onclick="button1_Click" />

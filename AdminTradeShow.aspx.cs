@@ -23,7 +23,8 @@ public partial class AdminTradeShow : System.Web.UI.Page
     protected void button1_Click(object sender, EventArgs e)
     {
         Label6.Text = Label7.Text = Label8.Text = Label24.Text = Label25.Text = String.Empty;
-        textbox1.Text = textbox2.Text = textbox3.Text = textbox6.Text = String.Empty;
+        textbox1.Text = textbox3.Text = textbox6.Text = String.Empty;
+        Calendar1.SelectedDate = DateTime.Now;
         panel1.Visible = true;
         panel2.Visible = false;
         panel3.Visible = false;
@@ -35,9 +36,9 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         DropDownList1.Items.Clear();
         foreach (Table_TradeShow tradeshow in tradeshows)
-            DropDownList1.Items.Add(tradeshow.name);
+            DropDownList1.Items.Add(tradeshow.id.ToString());
         Label14.Text = Label22.Text = Label16.Text = Label15.Text = String.Empty;
-        textbox4.Text = textbox5.Text = textbox6.Text = String.Empty;
+        textbox5.Text = textbox6.Text = String.Empty;
         DropDownList1_SelectedIndexChanged(sender, e);
         checkbox1.Checked = true;
         checkbox1_CheckedChanged(sender, e);
@@ -52,7 +53,7 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         DropDownList2.Items.Clear();
         foreach (Table_TradeShow tradeshow in tradeshows)
-            DropDownList2.Items.Add(tradeshow.name);
+            DropDownList2.Items.Add(tradeshow.id.ToString());
         panel1.Visible = false;
         panel2.Visible = false;
         panel3.Visible = true;
@@ -64,15 +65,13 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         Label6.Text = Label7.Text = Label8.Text = Label24.Text = Label25.Text = String.Empty;
         if (textbox1.Text.Equals(String.Empty) ||
-            textbox2.Text.Equals(String.Empty) ||
+            
             textbox3.Text.Equals(String.Empty) ||
             textbox6.Text.Equals(String.Empty) ||
             FileUpload1.HasFile == false)
         {
             if (textbox1.Text.Equals(String.Empty))
                 Label6.Text = "*";
-            if (textbox2.Text.Equals(String.Empty))
-                Label7.Text = "*";
             if (textbox3.Text.Equals(String.Empty))
                 Label24.Text = "*";
             if (textbox6.Text.Equals(String.Empty))
@@ -85,32 +84,25 @@ public partial class AdminTradeShow : System.Web.UI.Page
         }
         try
         {
-            if (dbc.GetTradeShowByName(this.textbox1.Text) == null)
-            {
-                DateTimeFormatInfo dtFormatInfo = new DateTimeFormatInfo();
-                dtFormatInfo.ShortDatePattern = "MM-dd-yyyy";
-                Table_TradeShow tradeshow = new Table_TradeShow();
-                tradeshow.name = textbox1.Text;
-                tradeshow.date = Convert.ToDateTime(textbox2.Text, dtFormatInfo); 
-                tradeshow.location = textbox3.Text;
-                tradeshow.link = textbox6.Text;
-                tradeshow.image = @"images/tradeshow/" + FileUpload1.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(tradeshow.image);
-                FileUpload1.PostedFile.SaveAs(mappath);
-                dbc.AddTradeShow(tradeshow);
-                tradeshows.Add(tradeshow);
-                panel1.Visible = false;
-                Label20.Text = "Successfully Added.";
-                panel4.Visible = true;
-                panel5.Visible = false;
-                return;
-            }
-            else
-            {
-                Label21.Text = "This Trade Show already exists.";
-                panel5.Visible = true;
-                return;
-            }
+
+            DateTimeFormatInfo dtFormatInfo = new DateTimeFormatInfo();
+            tradeshow.name = textbox1.Text;
+            tradeshow.date = Calendar1.SelectedDate;
+            tradeshow.date_end = Calendar3.SelectedDate;
+            tradeshow.location = textbox3.Text;
+            tradeshow.link = textbox6.Text;
+            tradeshow.image = @"images/tradeshow/" + FileUpload1.PostedFile.FileName.ToString();
+            String mappath = Server.MapPath(tradeshow.image);
+            FileUpload1.PostedFile.SaveAs(mappath);
+            dbc.AddTradeShow(tradeshow);
+            tradeshows.Add(tradeshow);
+            panel1.Visible = false;
+            Label20.Text = "Successfully Added.";
+            panel4.Visible = true;
+            panel5.Visible = false;
+            GridView1.DataBind();
+            return;
+
         }
         catch (Exception e1)
         {
@@ -122,13 +114,10 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         Label14.Text = Label15.Text = Label22.Text = Label16.Text = String.Empty;
 
-        if (textbox4.Text.Equals(String.Empty) ||
-            textbox5.Text.Equals(String.Empty) ||
+        if (textbox5.Text.Equals(String.Empty) ||
             textbox7.Text.Equals(String.Empty) ||
             (checkbox1.Checked == false && FileUpload2.HasFile == false))
         {
-            if (textbox4.Text.Equals(String.Empty))
-                Label14.Text = "*";
             if (textbox5.Text.Equals(String.Empty))
                 Label15.Text = "*";
             if (textbox7.Text.Equals(String.Empty))
@@ -140,15 +129,15 @@ public partial class AdminTradeShow : System.Web.UI.Page
         try
         {
             Table_TradeShow tradeshow = new Table_TradeShow();
-            DateTimeFormatInfo dtFormatInfo=new DateTimeFormatInfo();
-            dtFormatInfo.ShortDatePattern="MM-dd-yyyy";
-            tradeshow.name = DropDownList1.SelectedItem.ToString();
-            tradeshow.date = Convert.ToDateTime(textbox4.Text, dtFormatInfo);
+            tradeshow.id = Convert.ToInt32(DropDownList1.SelectedItem.ToString());
+            tradeshow.name = textbox2.Text;
+            tradeshow.date = Calendar2.SelectedDate;
             tradeshow.location = textbox5.Text;
             tradeshow.link = textbox7.Text;
+            tradeshow.date_end = Calendar4.SelectedDate;
             if (checkbox1.Checked == true)
             {
-                tradeshow.image = dbc.GetTradeShowByName(tradeshow.name).image;
+                tradeshow.image = dbc.GetTradeShowById(tradeshow.id).image;
             }
             else
             {
@@ -159,7 +148,7 @@ public partial class AdminTradeShow : System.Web.UI.Page
             dbc.UpdateTradeShow(tradeshow);
             foreach (Table_TradeShow t in tradeshows)
             {
-                if (t.name == tradeshow.name)
+                if (t.id == tradeshow.id)
                 {
                     t.name = tradeshow.name;
                     t.date = tradeshow.date;
@@ -173,6 +162,7 @@ public partial class AdminTradeShow : System.Web.UI.Page
             Label20.Text = "Successfully Udated.";
             panel4.Visible = true;
             panel5.Visible = false;
+            GridView1.DataBind();
             return;
         }
         catch (Exception e1)
@@ -185,10 +175,10 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         try
         {
-            dbc.DeleteTradeShow(DropDownList2.SelectedItem.ToString());
+            dbc.DeleteTradeShow(Convert.ToInt32(DropDownList2.SelectedItem.ToString()));
             for (int i = 0; i < tradeshows.Count; i++)
             {
-                if (tradeshows[i].name == DropDownList2.SelectedItem.ToString())
+                if (tradeshows[i].id == Convert.ToInt32(DropDownList2.SelectedItem.ToString()))
                 {
                     tradeshows.RemoveAt(i);
                     break;
@@ -197,6 +187,7 @@ public partial class AdminTradeShow : System.Web.UI.Page
             panel3.Visible = false;
             Label20.Text = "Successfully Deleted.";
             panel4.Visible = true;
+            GridView1.DataBind();
         }
         catch (Exception e1)
         {
@@ -208,9 +199,10 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         foreach (Table_TradeShow tradeshow in tradeshows)
         {
-            if (tradeshow.name == DropDownList1.SelectedItem.ToString())
+            if (tradeshow.id == Convert.ToInt32(DropDownList1.SelectedItem.ToString()))
             {
-                textbox4.Text = tradeshow.date.ToString("MM-dd-yyyy");
+                Calendar2.SelectedDate = tradeshow.date;
+                textbox2.Text = tradeshow.name;
                 textbox5.Text = tradeshow.location;
                 textbox7.Text = tradeshow.link;
                 break;
@@ -222,4 +214,5 @@ public partial class AdminTradeShow : System.Web.UI.Page
     {
         FileUpload2.Visible = checkbox1.Checked == true ? false : true;
     }
+
 }

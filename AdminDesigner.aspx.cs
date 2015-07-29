@@ -32,7 +32,7 @@ public partial class AdminDesigner : System.Web.UI.Page
         DropDownList1.Items.Clear();
         foreach (Table_Designer designer in designers)
         {
-            DropDownList1.Items.Add(designer.name);
+            DropDownList1.Items.Add(designer.id.ToString());
         }
         Label14.Text = Label15.Text = String.Empty;
         textbox3.Text = String.Empty;
@@ -50,7 +50,7 @@ public partial class AdminDesigner : System.Web.UI.Page
         DropDownList2.Items.Clear();
         foreach (Table_Designer designer in designers)
         {
-            DropDownList2.Items.Add(designer.name);
+            DropDownList2.Items.Add(designer.id.ToString());
         }
         panel1.Visible = false;
         panel2.Visible = false;
@@ -77,28 +77,22 @@ public partial class AdminDesigner : System.Web.UI.Page
         }
         try
         {
-            if (dbc.GetDesignerByName(this.textbox1.Text) == null)
-            {
-                Table_Designer designer = new Table_Designer();
-                designer.name = textbox1.Text;
-                designer.description = textbox2.Text;
-                designer.imageUrl = @"images/designer/" + FileUpload1.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(designer.imageUrl);
-                FileUpload1.PostedFile.SaveAs(mappath);
-                dbc.AddDesigner(designer);
-                designers.Add(designer);
-                panel1.Visible = false;
-                Label20.Text = "Successfully Added.";
-                panel4.Visible = true;
-                panel5.Visible = false;
-                return;
-            }
-            else
-            {
-                Label21.Text = "Designer name is already exist.";
-                panel5.Visible = true;
-                return;
-            }
+
+            Table_Designer designer = new Table_Designer();
+            designer.name = textbox1.Text;
+            designer.description = textbox2.Text;
+            designer.imageUrl = @"images/designer/" + FileUpload1.PostedFile.FileName.ToString();
+            String mappath = Server.MapPath(designer.imageUrl);
+            FileUpload1.PostedFile.SaveAs(mappath);
+            dbc.AddDesigner(designer);
+            designers.Add(designer);
+            panel1.Visible = false;
+            Label20.Text = "Successfully Added.";
+            panel4.Visible = true;
+            panel5.Visible = false;
+            GridView1.DataBind();
+            return;
+
         }
         catch (Exception e1)
         {
@@ -122,11 +116,13 @@ public partial class AdminDesigner : System.Web.UI.Page
         try
         {
             Table_Designer designer = new Table_Designer();
-            designer.name = DropDownList1.SelectedItem.ToString();
+
+            designer.id = Convert.ToInt32(DropDownList1.SelectedItem.ToString());
+            designer.name = textbox4.Text;
             designer.description = textbox3.Text;
             if (checkbox1.Checked == true)
             {
-                designer.imageUrl = dbc.GetDesignerByName(designer.name).imageUrl;
+                designer.imageUrl = dbc.GetDesignerById(designer.id).imageUrl;
             }
             else
             {
@@ -149,6 +145,7 @@ public partial class AdminDesigner : System.Web.UI.Page
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
             panel5.Visible = false;
+            GridView1.DataBind();
             return;
         }
         catch (Exception e1)
@@ -160,10 +157,10 @@ public partial class AdminDesigner : System.Web.UI.Page
     {
         try
         {
-            dbc.DeleteDesigner(DropDownList2.SelectedItem.ToString());
+            dbc.DeleteDesigner(Convert.ToInt32(DropDownList2.SelectedItem.ToString()));
             for (int i = 0; i < designers.Count; i++)
             {
-                if (designers[i].name == DropDownList2.SelectedItem.ToString())
+                if (designers[i].id == Convert.ToInt32(DropDownList2.SelectedItem.ToString()))
                 {
                     designers.RemoveAt(i);
                     break;
@@ -172,6 +169,7 @@ public partial class AdminDesigner : System.Web.UI.Page
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
             panel4.Visible = true;
+            GridView1.DataBind();
         }
         catch (Exception e1)
         {
@@ -182,8 +180,9 @@ public partial class AdminDesigner : System.Web.UI.Page
     {
         foreach (Table_Designer designer in designers)
         {
-            if (designer.name == DropDownList1.SelectedItem.ToString())
+            if (designer.id == Convert.ToInt32(DropDownList1.SelectedItem.ToString()))
             {
+                textbox4.Text = designer.name;
                 textbox3.Text = designer.description;
                 break;
             }
@@ -192,5 +191,16 @@ public partial class AdminDesigner : System.Web.UI.Page
     protected void checkbox1_CheckedChanged(object sender, EventArgs e)
     {
         FileUpload2.Visible = checkbox1.Checked? false : true;
+    }
+    protected void GridView1_DataBound(object sender, EventArgs e)
+    {
+        for (int i = 0; i < GridView1.Rows.Count; i++)
+        {
+            if (GridView1.Rows[i].Cells[2].Text.Length > 100)
+            {
+                GridView1.Rows[i].Cells[2].Text = GridView1.Rows[i].Cells[2].Text.Substring(0, 99);
+                GridView1.Rows[i].Cells[2].Text += "...";
+            }
+        }
     }
 }

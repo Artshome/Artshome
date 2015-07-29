@@ -16,162 +16,175 @@
     <script src="script/jquery.lightbox-0.5.pack.js" type="text/javascript"></script>
     <script src="script/PNG.js" type="text/javascript"></script>
 
-    <asp:ContentPlaceHolder id="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
 
     <div id="rightButton">
-	<ul id="right_ul">
-		<li id="right_qq" class="right_ico" show="qq" hide="tel"></li>
-		<li id="right_tel" class="right_ico" show="tel" hide="qq"></li>
-		<li id="right_tip" class="png">
-		<p class="flagShow_p1 flag_tel">Contact</p>
-		<p class="flagShow_p2 flag_tel"><%=info.ContactPhone %></p>
-		<p class="flagShow_p1 flag_qq">Skype us!</p>
-		<p class="flagShow_p2 flag_qq">
-		<a href="skype:<%=info.ContactSkype %>?call" onclick="return skypeCheck();"><img src="http://mystatus.skype.com/smallclassic/<%=info.ContactSkype %>" style="border: none;" alt="Call me!" /></a>
-		</p>
-		</li>
-	</ul>
+        <ul id="right_ul">
+            <li id="right_qq" class="right_ico" show="qq" hide="tel"></li>
+            <li id="right_tel" class="right_ico" show="tel" hide="qq"></li>
+            <li id="right_tip" class="png">
+                <p class="flagShow_p1 flag_tel">Contact</p>
+                <p class="flagShow_p2 flag_tel"><%=info.ContactPhone %></p>
+                <p class="flagShow_p1 flag_qq">Skype us!</p>
+                <p class="flagShow_p2 flag_qq">
+                    <a href="skype:<%=info.ContactSkype %>?call" onclick="return skypeCheck();">
+                        <img src="http://mystatus.skype.com/smallclassic/<%=info.ContactSkype %>" style="border: none;" alt="Call me!" /></a>
+                </p>
+            </li>
+        </ul>
     </div>
     <div id="backToTop">
-	    <a href="javascript:;" onfocus="this.blur();" class="backToTop_a png"></a>
+        <a href="javascript:;" onfocus="this.blur();" class="backToTop_a png"></a>
     </div>
-     <script type="text/javascript">
-         $(document).ready(function (e) {
-             $("#rightButton").css("right", "0px");
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $("#rightButton").css("right", "0px");
 
-             var button_toggle = true;
-             $(".right_ico").live("mouseover", function () {
-                 var tip_top;
-                 var show = $(this).attr('show');
-                 var hide = $(this).attr('hide');
-                 tip_top = show == 'tel' ? 65 : -10;
-                 button_toggle = false;
-                 $("#right_tip").css("top", tip_top).show().find(".flag_" + show).show();
-                 $(".flag_" + hide).hide();
+            var button_toggle = true;
+            $(".right_ico").live("mouseover", function () {
+                var tip_top;
+                var show = $(this).attr('show');
+                var hide = $(this).attr('hide');
+                tip_top = show == 'tel' ? 65 : -10;
+                button_toggle = false;
+                $("#right_tip").css("top", tip_top).show().find(".flag_" + show).show();
+                $(".flag_" + hide).hide();
 
-             }).live("mouseout", function () {
-                 button_toggle = true;
-                 hideRightTip();
-             });
+            }).live("mouseout", function () {
+                button_toggle = true;
+                hideRightTip();
+            });
 
 
-             $("#right_tip").live("mouseover", function () {
-                 button_toggle = false;
-                 $(this).show();
-             }).live("mouseout", function () {
-                 button_toggle = true;
-                 hideRightTip();
-             });
+            $("#right_tip").live("mouseover", function () {
+                button_toggle = false;
+                $(this).show();
+            }).live("mouseout", function () {
+                button_toggle = true;
+                hideRightTip();
+            });
 
-             function hideRightTip() {
-                 setTimeout(function () {
-                     if (button_toggle) $("#right_tip").hide();
-                 }, 500);
-             }
+            function hideRightTip() {
+                setTimeout(function () {
+                    if (button_toggle) $("#right_tip").hide();
+                }, 500);
+            }
 
-             $("#backToTop").live("click", function () {
-                 var _this = $(this);
-                 $('html,body').animate({ scrollTop: 0 }, 500, function () {
-                     _this.hide();
-                 });
-             });
+            $("#backToTop").live("click", function () {
+                var _this = $(this);
+                $('html,body').animate({ scrollTop: 0 }, 500, function () {
+                    _this.hide();
+                });
+            });
 
-             $(window).scroll(function () {
-                 var htmlTop = $(document).scrollTop();
-                 if (htmlTop > 0) {
-                     $("#backToTop").show();
-                 } else {
-                     $("#backToTop").hide();
-                 }
-             });
-         });
+            $(window).scroll(function () {
+                var htmlTop = $(document).scrollTop();
+                if (htmlTop > 0) {
+                    $("#backToTop").show();
+                } else {
+                    $("#backToTop").hide();
+                }
+            });
+        });
     </script>
 
     <div class="mainBody">
-    <form id="form1" runat="server">
-        
-    <div class="head">
-        <img class="logo" src="images/logo.png" alt="Artshome" />
-        
-        <div class="headControls">
-            <span class="headtitle"><%=companyName %></span>
-            <a href="http://facebook.com" target="_blank"><img class="icon" src="images/facebook.png" alt="facebook" /></a>
-            <br /><br />
-            <select class="languageBox">
-                <option>English</option>
-            </select>
-            <input type="text" id="text1" class="searchBox" />
-            <input type="button" id="button1" class="searchButton" value="Go"/>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $("#button1").click(function () {
-                        window.open('https://www.google.com.hk/search?q=' + $("#text1").val(), '_blank');
-                    });
-                });
-            </script>
+        <form id="form1" runat="server">
+
+            <div class="head">
+                <img class="logo" src="images/logo.png" alt="Artshome" />
+
+                <div class="headControls">
+                    <span class="headtitle"><%=companyName %></span>
+                    <a href="http://www.facebook.com/newtophomeware" target="_blank">
+                        <img class="icon" src="images/facebook.png" alt="facebook" /></a>
+                    <br />
+                    <br />
+                    <select class="languageBox">
+                        <option>English</option>
+                    </select>
+                    <input type="text" id="text1" class="searchBox" />
+                    <input type="button" id="button1" class="searchButton" value="Go" />
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $("#button1").click(function () {
+                                window.open('https://www.google.com.hk/search?q=' + $("#text1").val(), '_blank');
+                            });
+                        });
+                    </script>
+                </div>
+
+            </div>
+            <div id="navmenu">
+                <ul>
+                    <li><a href="Default.aspx">HOME</a></li>
+                    <li><a href="collections.aspx">COLLECTIONS</a>
+
+
+                        <%for (int i = 0; i <= collections.Count / 12; i++)
+                          {
+                        %>
+                        <ul style="position:absolute;left:<%=i*300%>px;top=0px">
+                            <%
+                                  for (int j = 0; j < 12; j++)
+                                  {
+                            %>
+                            <li><a href="collection-detail.aspx?collectionName=<%=collections[i*12+j].name %>"><%=collections[i*12+j].name %></a></li>
+                            <%
+                                      if (i * 12 + j == collections.Count - 1)
+                                          break;
+                                  }
+                            %>
+                        </ul>
+                        <%
+                              }
+                        %>
+                        
+                    </li>
+                    <li><a href="#">DESIGNERS</a>
+                        <ul>
+                            <%
+                                foreach (Table_Designer designer in designers)
+                                {
+                            %>
+                            <li><a href="designer.aspx?designerName=<%=designer.name %>"><%=designer.name %></a></li>
+                            <%
+
+                                }     
+                
+                            %>
+                        </ul>
+                    </li>
+                    <li><a href="bespoke.aspx">BESPOKE</a>
+                        
+                    </li>
+                    <li><a href="tradeshow.aspx">TRADE SHOWS</a></li>
+                    <li><a href="news.aspx">NEWS</a></li>
+                    <li><a href="about.aspx">INFORMATION</a>
+                        <ul>
+                            <li><a href="about.aspx">ABOUT US</a></li>
+                            <li><a href="#">PRODUCT INFO</a></li>
+                            <li><a href="#">DELIVERY INFO</a></li>
+                            <li><a href="#">CERTIFICATE</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="contact.aspx">CONTACT</a></li>
+                </ul>
+            </div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </form>
+        <div class="foot">
+            <hr />
+            © Arts Home<br />
+            <br />
+
+            <span style="font-size: x-small; margin-top: 20px;">Design by Arts Home</span>
         </div>
-        
-    </div>
-    <div id="navmenu">
-	    <ul>
-            <li><a href="Default.aspx">HOME</a></li>
-            <li><a href="collections.aspx">COLLECTIONS</a>
-            <ul>
-            <%
-                foreach (Table_Collection collection in collections)
-                {
-                    %>
-                    <li><a href="collection-detail.aspx?collectionName=<%=collection.name %>"><%=collection.name %></a></li>
-                    <%
 
-                }     
-                
-            %>
-            </ul></li>
-            <li><a href="#">DESIGNERS</a>
-            <ul>
-            <%
-                foreach (Table_Designer designer in designers)
-                {
-                    %>
-                    <li><a href="designer.aspx?designerName=<%=designer.name %>"><%=designer.name %></a></li>
-                    <%
-
-                }     
-                
-            %>
-            </ul></li>
-            <li><a href="bespoke.aspx">BESPOKE</a>
-            <ul>
-                <li><a href="#">NEWTOP</a></li>
-                <li><a href="#">TDC</a></li>
-                <li><a href="#">ECPLAZA</a></li>
-            </ul></li>
-            <li><a href="tradeshow.aspx">TRADE SHOWS</a></li>
-            <li><a href="news.aspx">NEWS</a></li>
-            <li><a href="#">INFORMATION</a>
-            <ul>
-                <li><a href="about.aspx">ABOUT US</a></li>
-                <li><a href="#">PRODUCT INFO</a></li>
-                <li><a href="#">DELIVERY INFO</a></li>
-                <li><a href="#">CERTIFICATE</a></li>
-            </ul></li>
-            <li><a href="contact.aspx">CONTACT</a></li>
-        </ul>
-    </div>
-    
-    <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
-    </form>
-    <div class="foot">
-    <hr />
-    © Arts Home<br /><br />
-    
-    <span style="font-size:x-small; margin-top:20px;">Design by Arts Home</span>
-    </div>
-    
     </div>
 </body>
 </html>

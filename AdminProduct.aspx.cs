@@ -38,7 +38,7 @@ public partial class AdminProduct : System.Web.UI.Page
     {
         DropDownList2.Items.Clear();
         foreach (Table_Product product in products)
-            DropDownList2.Items.Add(product.code);
+            DropDownList2.Items.Add(product.id.ToString());
         DropDownList3.Items.Clear();
         foreach (Table_Collection collection in collections)
             DropDownList3.Items.Add(collection.name);
@@ -57,7 +57,7 @@ public partial class AdminProduct : System.Web.UI.Page
     {
         DropDownList4.Items.Clear();
         foreach (Table_Product product in products)
-            DropDownList4.Items.Add(product.code);
+            DropDownList4.Items.Add(product.id.ToString());
         panel1.Visible = false;
         panel2.Visible = false;
         panel3.Visible = true;
@@ -86,30 +86,24 @@ public partial class AdminProduct : System.Web.UI.Page
         }
         try
         {
-            if (dbc.GetProductByCode(this.textbox1.Text) == null)
-            {
-                Table_Product product = new Table_Product();
-                product.code = textbox1.Text;
-                product.shape = textbox2.Text;
-                product.size = textbox3.Text;
-                product.collection = DropDownList1.SelectedItem.ToString();
-                product.imageUrl = @"images/product/" + FileUpload1.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(product.imageUrl);
-                FileUpload1.PostedFile.SaveAs(mappath);
-                dbc.AddProduct(product);
-                products.Add(product);
-                panel1.Visible = false;
-                Label20.Text = "Successfully Added.";
-                panel4.Visible = true;
-                panel5.Visible = false;
-                return;
-            }
-            else
-            {
-                Label21.Text = "Collection name is already exist.";
-                panel5.Visible = true;
-                return;
-            }
+
+            Table_Product product = new Table_Product();
+            product.code = textbox1.Text;
+            product.shape = textbox2.Text;
+            product.size = textbox3.Text;
+            product.collection = DropDownList1.SelectedItem.ToString();
+            product.imageUrl = @"images/product/" + FileUpload1.PostedFile.FileName.ToString();
+            String mappath = Server.MapPath(product.imageUrl);
+            FileUpload1.PostedFile.SaveAs(mappath);
+            dbc.AddProduct(product);
+            products.Add(product);
+            panel1.Visible = false;
+            Label20.Text = "Successfully Added.";
+            panel4.Visible = true;
+            panel5.Visible = false;
+            GridView1.DataBind();
+            return;
+
         }
         catch (Exception e1)
         {
@@ -137,13 +131,14 @@ public partial class AdminProduct : System.Web.UI.Page
         try
         {
             Table_Product product = new Table_Product();
-            product.code = DropDownList2.SelectedItem.ToString();
+            product.id = Convert.ToInt32(DropDownList2.SelectedItem.ToString());
+            product.code = textbox6.Text;
             product.shape = textbox4.Text;
             product.size = textbox5.Text;
             product.collection = DropDownList3.SelectedItem.ToString();
             if (checkbox1.Checked == true)
             {
-                product.imageUrl = dbc.GetProductByCode(product.code).imageUrl;
+                product.imageUrl = dbc.GetProductById(product.id).imageUrl;
             }
             else
             {
@@ -154,8 +149,9 @@ public partial class AdminProduct : System.Web.UI.Page
             dbc.UpdateProduct(product);
             foreach (Table_Product p in products)
             {
-                if (p.code == product.code)
+                if (p.id == product.id)
                 {
+                    p.code = product.code;
                     p.shape = product.shape;
                     p.size = product.size;
                     p.collection = product.collection;
@@ -167,6 +163,7 @@ public partial class AdminProduct : System.Web.UI.Page
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
             panel5.Visible = false;
+            GridView1.DataBind();
             return;
         }
         catch (Exception e1)
@@ -178,10 +175,10 @@ public partial class AdminProduct : System.Web.UI.Page
     {
         try
         {
-            dbc.DeleteProduct(DropDownList4.SelectedItem.ToString());
+            dbc.DeleteProduct(Convert.ToInt32(DropDownList4.SelectedItem.ToString()));
             for (int i = 0; i < products.Count; i++)
             {
-                if (products[i].code == DropDownList4.SelectedItem.ToString())
+                if (products[i].id == Convert.ToInt32(DropDownList4.SelectedItem.ToString()))
                 {
                     products.RemoveAt(i);
                     break;
@@ -190,6 +187,7 @@ public partial class AdminProduct : System.Web.UI.Page
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
             panel4.Visible = true;
+            GridView1.DataBind();
         }
         catch (Exception e1)
         {
@@ -200,8 +198,9 @@ public partial class AdminProduct : System.Web.UI.Page
     {
         foreach (Table_Product product in products)
         {
-            if (product.code == DropDownList2.SelectedItem.ToString())
+            if (product.id == Convert.ToInt32(DropDownList2.SelectedItem.ToString()))
             {
+                textbox6.Text = product.code;
                 textbox4.Text = product.shape;
 				textbox5.Text = product.size;
                 break;

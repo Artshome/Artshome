@@ -92,6 +92,7 @@ public partial class AdminAdmin : System.Web.UI.Page
                 panel1.Visible = false;
                 Label20.Text = "Successfully Added.";
                 panel4.Visible = true;
+                GridView1.DataBind();
                 return;
             }
             else
@@ -149,6 +150,7 @@ public partial class AdminAdmin : System.Web.UI.Page
             }
             panel2.Visible = false;
             Label20.Text = "Successfully updated.";
+            GridView1.DataBind();
             panel4.Visible = true;
             return;
         }
@@ -172,6 +174,7 @@ public partial class AdminAdmin : System.Web.UI.Page
             }
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
+            GridView1.DataBind();
             panel4.Visible = true;
         }
         catch (Exception e1)

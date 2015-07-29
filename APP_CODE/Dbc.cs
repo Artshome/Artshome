@@ -15,10 +15,10 @@ public class Dbc
         data.SubmitChanges();
     }
     //根据ID获取展会
-    public Table_TradeShow GetTradeShowByName(string name)
+    public Table_TradeShow GetTradeShowById(int id)
     {
         var q = from s in data.Table_TradeShow
-                where s.name == name
+                where s.id == id
                 select s;
         return q.Count() == 0 ? null : q.First();
     }
@@ -33,22 +33,24 @@ public class Dbc
     public void UpdateTradeShow(Table_TradeShow tradeshow)
     {
         var q = from s in data.Table_TradeShow
-                where s.name == tradeshow.name
+                where s.id == tradeshow.id
                 select s;
         foreach (Table_TradeShow c in q)
         {
+            c.name = tradeshow.name;
             c.date = tradeshow.date;
             c.location = tradeshow.location;
             c.image = tradeshow.image;
             c.link = tradeshow.link;
+            c.date_end = tradeshow.date_end;
         }
         data.SubmitChanges();
     }
     //删除展会
-    public void DeleteTradeShow(string name)
+    public void DeleteTradeShow(int id)
     {
         var q = from s in data.Table_TradeShow
-                where s.name == name
+                where s.id == id
                 select s;
         data.Table_TradeShow.DeleteAllOnSubmit(q);
         data.SubmitChanges();
@@ -61,10 +63,10 @@ public class Dbc
     }
 
     //删除collection
-    public void DeleteCollection(String name)
+    public void DeleteCollection(int id)
     {
         var q = from s in data.Table_Collection
-                where s.name == name
+                where s.id == id
                 select s;
         data.Table_Collection.DeleteAllOnSubmit(q);
         data.SubmitChanges();
@@ -74,10 +76,11 @@ public class Dbc
     public void UpdateCollection(Table_Collection collection)
     {
         var q = from s in data.Table_Collection
-                where s.name == collection.name
+                where s.id == collection.id
                 select s;
         foreach (Table_Collection c in q)
         {
+            c.name = collection.name;
             c.designer = collection.designer;
             c.description = collection.description;
             c.imageUrl = collection.imageUrl;
@@ -110,6 +113,14 @@ public class Dbc
                 select s;
         return q.Count() == 0 ? null : q.First();
     }
+    //根据Id读取collection
+    public Table_Collection GetCollectionById(int id)
+    {
+        var q = from s in data.Table_Collection
+                where s.id == id
+                select s;
+        return q.Count() == 0 ? null : q.First();
+    }
     //添加新的product
     public void AddProduct (Table_Product  product)
     {
@@ -118,10 +129,10 @@ public class Dbc
     }
 
     //删除product
-    public void DeleteProduct(String code)
+    public void DeleteProduct(int id)
     {
         var q = from s in data.Table_Product
-                where s.code == code
+                where s.id == id
                 select s;
         data.Table_Product.DeleteAllOnSubmit(q);
         data.SubmitChanges();
@@ -131,10 +142,11 @@ public class Dbc
     public void UpdateProduct(Table_Product product)
     {
         var q = from s in data.Table_Product
-                where s.code == product.code
+                where s.id == product.id
                 select s;
         foreach (Table_Product c in q)
         {
+            c.code = product.code;
             c.shape = product.shape;
             c.size = product.size;
             c.imageUrl = product.imageUrl;
@@ -158,7 +170,14 @@ public class Dbc
                 select s;
         return q.Count() == 0 ? null : q.First();
     }
-
+    //根据id读取product
+    public Table_Product GetProductById(int id)
+    {
+        var q = from s in data.Table_Product
+                where s.id == id
+                select s;
+        return q.Count() == 0 ? null : q.First();
+    }
     //根据collection名读取product
     public List<Table_Product> GetProductByCollectionName(String collectionName)
     {
@@ -175,10 +194,10 @@ public class Dbc
         data.SubmitChanges();
     }
     //删除设计师
-    public void DeleteDesigner(String name)
+    public void DeleteDesigner(int id)
     {
         var q = from s in data.Table_Designer
-                where s.name == name
+                where s.id == id
                 select s;
         data.Table_Designer.DeleteAllOnSubmit(q);
         data.SubmitChanges();
@@ -187,10 +206,11 @@ public class Dbc
     public void UpdateDesigner(Table_Designer designer)
     {
         var q = from s in data.Table_Designer
-                where s.name == designer.name
+                where s.id == designer.id
                 select s;
         foreach (Table_Designer c in q)
         {
+            c.name = designer.name;
             c.description = designer.description;
             c.imageUrl = designer.imageUrl;
         }
@@ -201,6 +221,14 @@ public class Dbc
     {
         var q = from s in data.Table_Designer
                 where s.name == name
+                select s;
+        return q.Count() == 0 ? null : q.First();
+    }
+    //根据id获取设计师
+    public Table_Designer GetDesignerById(int id)
+    {
+        var q = from s in data.Table_Designer
+                where s.id == id
                 select s;
         return q.Count() == 0 ? null : q.First();
     }

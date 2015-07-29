@@ -38,7 +38,7 @@ public partial class AdminCollection : System.Web.UI.Page
     {
         DropDownList2.Items.Clear();
         foreach (Table_Collection collection in collections)
-            DropDownList2.Items.Add(collection.name);
+            DropDownList2.Items.Add(collection.id.ToString());
         DropDownList3.Items.Clear();
         foreach (Table_Designer designer in designers)
             DropDownList3.Items.Add(designer.name);
@@ -57,7 +57,7 @@ public partial class AdminCollection : System.Web.UI.Page
     {
         DropDownList4.Items.Clear();
         foreach (Table_Collection collection in collections)
-            DropDownList4.Items.Add(collection.name);
+            DropDownList4.Items.Add(collection.id.ToString());
         panel1.Visible = false;
         panel2.Visible = false;
         panel3.Visible = true;
@@ -83,29 +83,23 @@ public partial class AdminCollection : System.Web.UI.Page
         }
         try
         {
-            if (dbc.GetCollectionByName(this.textbox1.Text) == null)
-            {
-                Table_Collection collection = new Table_Collection();
-                collection.name = textbox1.Text;
-                collection.description = textbox2.Text;
-                collection.designer = DropDownList1.SelectedItem.ToString();
-                collection.imageUrl = @"images/collection/" + FileUpload1.PostedFile.FileName.ToString();
-                String mappath = Server.MapPath(collection.imageUrl);
-                FileUpload1.PostedFile.SaveAs(mappath);
-                dbc.AddCollection(collection);
-                collections.Add(collection);
-                panel1.Visible = false;
-                Label20.Text = "Successfully Added.";
-                panel4.Visible = true;
-                panel5.Visible = false;
-                return;
-            }
-            else
-            {
-                Label21.Text = "Collection name is already exist.";
-                panel5.Visible = true;
-                return;
-            }
+
+            Table_Collection collection = new Table_Collection();
+            collection.name = textbox1.Text;
+            collection.description = textbox2.Text;
+            collection.designer = DropDownList1.SelectedItem.ToString();
+            collection.imageUrl = @"images/collection/" + FileUpload1.PostedFile.FileName.ToString();
+            String mappath = Server.MapPath(collection.imageUrl);
+            FileUpload1.PostedFile.SaveAs(mappath);
+            dbc.AddCollection(collection);
+            collections.Add(collection);
+            panel1.Visible = false;
+            Label20.Text = "Successfully Added.";
+            panel4.Visible = true;
+            panel5.Visible = false;
+            GridView1.DataBind();
+            return;
+
         }
         catch (Exception e1)
         {
@@ -129,12 +123,13 @@ public partial class AdminCollection : System.Web.UI.Page
         try
         {
             Table_Collection collection = new Table_Collection();
-            collection.name = DropDownList2.SelectedItem.ToString();
+            collection.id = Convert.ToInt32(DropDownList2.SelectedItem.Text);
+            collection.name = textbox4.Text;
             collection.designer = DropDownList3.SelectedItem.ToString();
             collection.description = textbox3.Text;
             if (checkbox1.Checked == true)
             {
-                collection.imageUrl = dbc.GetCollectionByName(collection.name).imageUrl;
+                collection.imageUrl = dbc.GetCollectionById(collection.id).imageUrl;
             }
             else
             {
@@ -157,6 +152,7 @@ public partial class AdminCollection : System.Web.UI.Page
             Label20.Text = "Successfully updated.";
             panel4.Visible = true;
             panel5.Visible = false;
+            GridView1.DataBind();
             return;
         }
         catch (Exception e1)
@@ -168,10 +164,10 @@ public partial class AdminCollection : System.Web.UI.Page
     {
         try
         {
-            dbc.DeleteCollection(DropDownList4.SelectedItem.ToString());
+            dbc.DeleteCollection(Convert.ToInt32(DropDownList4.SelectedItem.ToString()));
             for (int i = 0; i < collections.Count; i++)
             {
-                if (collections[i].name == DropDownList4.SelectedItem.ToString())
+                if (collections[i].id == Convert.ToInt32(DropDownList4.SelectedItem.ToString()))
                 {
                     collections.RemoveAt(i);
                     break;
@@ -180,6 +176,7 @@ public partial class AdminCollection : System.Web.UI.Page
             panel3.Visible = false;
             Label20.Text = "Successfully deleted.";
             panel4.Visible = true;
+            GridView1.DataBind();
         }
         catch (Exception e1)
         {
@@ -190,8 +187,9 @@ public partial class AdminCollection : System.Web.UI.Page
     {
         foreach (Table_Collection collection in collections)
         {
-            if (collection.name == DropDownList2.SelectedItem.ToString())
+            if (collection.id == Convert.ToInt32(DropDownList2.SelectedItem.ToString()))
             {
+                textbox4.Text = collection.name;
                 textbox3.Text = collection.description;
                 break;
             }
@@ -201,5 +199,16 @@ public partial class AdminCollection : System.Web.UI.Page
     protected void checkbox1_CheckedChanged(object sender, EventArgs e)
     {
         FileUpload2.Visible = checkbox1.Checked == true ? false : true;
+    }
+    protected void GridView1_DataBound(object sender, EventArgs e)
+    {
+        for (int i = 0; i < GridView1.Rows.Count; i++)
+        {
+            if (GridView1.Rows[i].Cells[2].Text.Length > 100)
+            {
+                GridView1.Rows[i].Cells[2].Text = GridView1.Rows[i].Cells[2].Text.Substring(0, 99);
+                GridView1.Rows[i].Cells[2].Text += "...";
+            }
+        }
     }
 }

@@ -38,7 +38,8 @@
                 <a class="menuitem" href="AdminInfo.aspx">Infomation</a>
                 <a class="menuitem" href="AdminNews.aspx">News</a>
                 <a class="menuitem" href="AdminTradeShow.aspx">Trade Show</a> 
-                
+                <a class="menuitem" href="AdminBespoke.aspx">Bespoke</a>
+                <a class="menuitem" href="AdminBanners.aspx">Banners</a>
             <%if (Session["productPermission"].ToString() == "true")
               { %>
                 <a class="menuitem" href="AdminProduct.aspx">Product</a>

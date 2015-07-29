@@ -10,6 +10,8 @@ public partial class _Default : System.Web.UI.Page
     private Dbc dbc = new Dbc();
     protected static List<Table_Collection> collectionslist = new List<Table_Collection>();
     protected static String images;
+    private DataClassesDataContext data = new DataClassesDataContext();
+    protected static Table_Banners _banners = new Table_Banners();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -21,6 +23,9 @@ public partial class _Default : System.Web.UI.Page
                 images+="{ \"img\": ";
                 images += "\"" + collection.imageUrl + "\", \"url\": \"" + "collection-detail.aspx?collectionName=" + collection.name + "\" },";
             }
+            var q = from s in data.Table_Banners
+                    select s;
+            _banners = q.First();
         }
     }
 }

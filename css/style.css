@@ -237,7 +237,6 @@ ul.imageHolder li p
 
 .tsImg
 {
-    width:150px;
     height:200px;
     margin-bottom:15px;
     margin-top:15px;
@@ -314,7 +313,7 @@ table.collectionTable tr td p img{
 
     .newsBox .newsDate
     {
-        font-size:x-small;
+        font-size:medium;
         margin-left:50px;
     }
     .newsBox .newsTitle
@@ -340,9 +339,9 @@ table.collectionTable tr td p img{
 .bespoke img{ width:850px;height:430px; clear: both;display: block; margin:auto;}
 .bespoke ul{padding-left:25px; list-style-type:disc; font-family:Georgia;}
 
-#navmenu{font-size:15px;position:relative;z-index:4; width:900px; margin:0 auto; height:39px;}
+#navmenu{font-size:15px;position:relative;z-index:4; width:900px; margin:0 auto; height:39px;font-weight:bold}
 #navmenu ul {float:left;}
-#navmenu ul li {float:left;height:37px;line-height:37px;position:relative; margin-left:25px}
+#navmenu ul li {float:left;height:30px;line-height:30px;position:relative; margin-left:25px}
 #navmenu ul li ul{position:absolute;top:37px;left:0;width:300px;background:#e9f2f1;display:none;}
 #navmenu ul li ul li {float:left;display:block;width:300px;}
 
